@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class FileNotificationViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
