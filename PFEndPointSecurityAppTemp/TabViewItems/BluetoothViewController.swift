@@ -15,26 +15,25 @@ class BluetoothViewController: NSViewController {
     @IBOutlet weak var powerToggle: NSSwitch!
     @IBOutlet var textView: NSTextView!
     
+    private var pairedDeviceListArr: [IOBluetoothDevice] = []
+    private var connectedDeviceListArr: [IOBluetoothDevice] = []
+    
+    private var textViewLineCount = 0
+    
+    override func loadView() {
+        super.loadView()
+        
+    }
+    
     override func viewWillAppear() {
         super.viewWillAppear()
-        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        connectedDeviceList.addItems(withObjectValues: ["1", "2"])
-        pairedDeviceList.addItems(withObjectValues: ["A", "B"])
         
-        pairedDevices()
-        
-        guard let devices = IOBluetoothDevice.pairedDevices() else {
-            print("No devices")
-            return
-        }
-        
-        print("devices :", devices)
     }
     
     override var representedObject: Any? {
@@ -45,19 +44,50 @@ class BluetoothViewController: NSViewController {
     
     
     @IBAction func getConnectedDeviceListDidTapped(_ sender: NSButton) {
-        
+        checkPairedAndConnectedDevices()
     }
     
     @IBAction func disConnectButtonDidTapped(_ sender: NSButton) {
+        let index = connectedDeviceList.indexOfSelectedItem
         
+        if index == -1 {
+            textViewLineCount = setTextViewText(self.textView, "Nothing To DisConnect", textViewLineCount)
+        } else {
+            textViewLineCount = setTextViewText(self.textView, "DisConnecting...", textViewLineCount)
+            
+            DispatchQueue.main.async { [self] in
+                if kIOReturnSuccess != self.connectedDeviceListArr[index].closeConnection() {
+                    textViewLineCount = setTextViewText(self.textView, "DisConnecting fail", textViewLineCount)
+                } else {
+                    textViewLineCount = setTextViewText(self.textView, "DisConnected", textViewLineCount)
+                }
+            }
+        }
     }
     
     @IBAction func getPairedDevicedListButtonDidTapped(_ sender: NSButton) {
-        
+        checkPairedAndConnectedDevices()
     }
     
     @IBAction func connectedButtonDidTapped(_ sender: NSButton) {
+        let index = pairedDeviceList.indexOfSelectedItem
         
+        if index == -1 {
+            textViewLineCount = setTextViewText(self.textView, "Nothing To Connect", textViewLineCount)
+        } else {
+            textViewLineCount = setTextViewText(self.textView, "Connecting...", textViewLineCount)
+            
+            //            var channel: IOBluetoothL2CAPChannel? = IOBluetoothL2CAPChannel()
+            //            print(self.krToString(self.pairedDeviceListArr?[index].openL2CAPChannelSync(&channel, withPSM: 0x000, delegate: ChannelDelegate()) ?? kIOReturnTimeout))
+            
+            DispatchQueue.main.async { [self] in
+                if kIOReturnSuccess != self.pairedDeviceListArr[index].openConnection(self, withPageTimeout: 10, authenticationRequired: false) {
+                    textViewLineCount = setTextViewText(self.textView, "Connecting fail", textViewLineCount)
+                } else {
+                    textViewLineCount = setTextViewText(self.textView, "Connected", textViewLineCount)
+                }
+            }
+        }
     }
     
     @IBAction func connectCallBackButtonDidTapped(_ sender: NSButton) {
@@ -76,33 +106,48 @@ class BluetoothViewController: NSViewController {
         
     }
     
-    func pairedDevices() {
-        print("Bluetooth devices:")
+    func disConnectDevices() {
+        
+    }
+    
+    func connectDevice() {
+        
+    }
+    
+    func checkPairedAndConnectedDevices() {
+        connectedDeviceList.removeAllItems()
+        pairedDeviceList.removeAllItems()
         
         guard let devices = IOBluetoothDevice.pairedDevices() else {
-            print("No devices")
+            textViewLineCount = setTextViewText(self.textView, "No devices", textViewLineCount)
             return
         }
         
         for item in devices {
             if let device = item as? IOBluetoothDevice {
-                print("Name: \(device.name ?? "noName")")
-                print("Paired?: \(device.isPaired())")
-                print("Connected?: \(device.isConnected())")
+                
+                if device.isConnected() {
+                    connectedDeviceListArr.append(device)
+                    connectedDeviceList.addItem(withObjectValue: device.addressString ?? device.name ?? "")
+                    connectedDeviceList.selectItem(at: 0)
+                    textViewLineCount = setTextViewText(self.textView, "Connected Device :: \(device.addressString ?? "No address") - \(device.name ?? "No device name")", textViewLineCount)
+                } else if device.isPaired() {
+                    pairedDeviceListArr.append(device)
+                    pairedDeviceList.addItem(withObjectValue: device.addressString ?? device.name ?? "")
+                    pairedDeviceList.selectItem(at: 0)
+                    textViewLineCount = setTextViewText(self.textView, "Paired Device :: \(device.addressString ?? "No address") - \(device.name ?? "No device name")", textViewLineCount)
+                }
             }
         }
-        
-        
     }
     
-}
-
-extension BluetoothViewController {
-    private func checkBluetoothPermission() {
-        
-    }
+    //    private func setTextViewText(_ textView: NSTextView, _ text: String) {
+    //        let lineCountToString = String(textViewLineCount)
+    //        textView.textStorage?.append(NSAttributedString(string: lineCountToString + " ::  " + text + "\n"))
+    //        textViewLineCount += 1
+    //
+    //        guard let textLength = textView.textStorage?.length else { return }
+    //        textView.textStorage?.setAttributes([.foregroundColor: NSColor.white, .font: NSFont.systemFont(ofSize: 15)], range: NSRange(location: 0, length: textLength))
+    //    }
     
-    private func setLog(_ text: String) {
-        
-    }
 }

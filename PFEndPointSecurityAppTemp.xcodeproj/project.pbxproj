@@ -15,6 +15,8 @@
 		FB95D4AE29EFB1E600F126B5 /* PFEndPointSecurityAppTempUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4AD29EFB1E600F126B5 /* PFEndPointSecurityAppTempUITests.swift */; };
 		FB95D4B029EFB1E600F126B5 /* PFEndPointSecurityAppTempUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4AF29EFB1E600F126B5 /* PFEndPointSecurityAppTempUITestsLaunchTests.swift */; };
 		FB95D4BE29EFCF3F00F126B5 /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */; };
+		FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4C229F0DD3E00F126B5 /* Constant.swift */; };
+		FB95D4C529F121A600F126B5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4C429F121A600F126B5 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		FB95D4AD29EFB1E600F126B5 /* PFEndPointSecurityAppTempUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFEndPointSecurityAppTempUITests.swift; sourceTree = "<group>"; };
 		FB95D4AF29EFB1E600F126B5 /* PFEndPointSecurityAppTempUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFEndPointSecurityAppTempUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
+		FB95D4C229F0DD3E00F126B5 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FB95D4C429F121A600F126B5 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		FB95D49029EFB1E600F126B5 /* PFEndPointSecurityAppTemp */ = {
 			isa = PBXGroup;
 			children = (
+				FB95D4BF29F0BD1C00F126B5 /* Common */,
 				FB95D4BC29EFCF2100F126B5 /* TabViewItems */,
 				FB95D49129EFB1E600F126B5 /* AppDelegate.swift */,
 				FB95D49529EFB1E600F126B5 /* Assets.xcassets */,
@@ -130,6 +135,15 @@
 				FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */,
 			);
 			path = TabViewItems;
+			sourceTree = "<group>";
+		};
+		FB95D4BF29F0BD1C00F126B5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FB95D4C229F0DD3E00F126B5 /* Constant.swift */,
+				FB95D4C429F121A600F126B5 /* Util.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +277,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB95D4BE29EFCF3F00F126B5 /* BluetoothViewController.swift in Sources */,
+				FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */,
+				FB95D4C529F121A600F126B5 /* Util.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
 				FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */,
 			);
