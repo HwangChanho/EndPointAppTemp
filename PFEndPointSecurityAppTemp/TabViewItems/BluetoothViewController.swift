@@ -77,9 +77,6 @@ class BluetoothViewController: NSViewController {
         } else {
             textViewLineCount = setTextViewText(self.textView, "Connecting...", textViewLineCount)
             
-            //            var channel: IOBluetoothL2CAPChannel? = IOBluetoothL2CAPChannel()
-            //            print(self.krToString(self.pairedDeviceListArr?[index].openL2CAPChannelSync(&channel, withPSM: 0x000, delegate: ChannelDelegate()) ?? kIOReturnTimeout))
-            
             DispatchQueue.main.async { [self] in
                 if kIOReturnSuccess != self.pairedDeviceListArr[index].openConnection(self, withPageTimeout: 10, authenticationRequired: false) {
                     textViewLineCount = setTextViewText(self.textView, "Connecting fail", textViewLineCount)
@@ -140,14 +137,5 @@ class BluetoothViewController: NSViewController {
             }
         }
     }
-    
-    //    private func setTextViewText(_ textView: NSTextView, _ text: String) {
-    //        let lineCountToString = String(textViewLineCount)
-    //        textView.textStorage?.append(NSAttributedString(string: lineCountToString + " ::  " + text + "\n"))
-    //        textViewLineCount += 1
-    //
-    //        guard let textLength = textView.textStorage?.length else { return }
-    //        textView.textStorage?.setAttributes([.foregroundColor: NSColor.white, .font: NSFont.systemFont(ofSize: 15)], range: NSRange(location: 0, length: textLength))
-    //    }
     
 }

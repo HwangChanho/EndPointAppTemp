@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */; };
 		FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49129EFB1E600F126B5 /* AppDelegate.swift */; };
 		FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */; };
 		FB95D49629EFB1E600F126B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB95D49529EFB1E600F126B5 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
 		FB95D48E29EFB1E600F126B5 /* PFEndPointSecurityAppTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFEndPointSecurityAppTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB95D49129EFB1E600F126B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotificationViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */,
 				FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */,
+				127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */,
 			);
 			path = TabViewItems;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */,
 				FB95D4C529F121A600F126B5 /* Util.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
+				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,
 				FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PFEndPointSecurityAppTemp/PFEndPointSecurityAppTemp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -476,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PFEndPointSecurityAppTemp/PFEndPointSecurityAppTemp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
