@@ -76,7 +76,8 @@ class DiskViewController: NSViewController {
         }))
         
         getSerialNumber(getExternalVolumeNameList(keys: .externalStorage).first!)
-        print(serialNumber)
+        
+        
     }
     
     override var representedObject: Any? {
@@ -89,20 +90,6 @@ class DiskViewController: NSViewController {
     @IBAction func getExternalDistListButtonDidTapped(_ sender: Any) {
         
     }
-    
-    //    func findSerialDevices(deviceType: String, serialPortIterator: inout io_iterator_t ) -> kern_return_t {
-    //        var result: kern_return_t = KERN_FAILURE
-    //        var classesToMatch = IOServiceMatching(kIOSerialBSDServiceValue)
-    //        var classesToMatchDict = (classesToMatch! as NSDictionary) as! Dictionary<String, AnyObject>
-    //        classesToMatchDict[kIOSerialBSDTypeKey] = deviceType as AnyObject
-    //
-    //        let classesToMatchCFDictRef = (classesToMatchDict as NSDictionary) as CFDictionary
-    //        result = IOServiceGetMatchingServices(kIOMainPortDefault, classesToMatchCFDictRef, &serialPortIterator);
-    //
-    //        print(result)
-    //
-    //        return result
-    //    }
     
     
     

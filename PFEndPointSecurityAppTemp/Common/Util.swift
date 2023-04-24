@@ -17,6 +17,7 @@ enum RootVolumePath {
 }
 
 enum IOKitKeys {
+    static let serialNumber: CFString = "Serial Number" as CFString
     static let usbSerialNumber: CFString = "USB Serial Number" as CFString
 }
 
@@ -188,63 +189,64 @@ func getDiskInfo(_ volumeName: String) -> CFDictionary? {
     return dictDADisk
 }
 
-func getSerialNumber(_ volumeName: String) {
-    print(#function)
-    guard let daDisk = getDADiskFromeVolume(volumeName) else { return }
-    
-    print(daDisk)
+func getSerialNumber(_ volumeName: String) -> String {
+    guard let daDisk = getDADiskFromeVolume(volumeName) else { return "" }
     
     let ioDevice = DADiskCopyIOMedia(daDisk)
     var ioParentIterator = io_iterator_t()
     
-    var cfParentProperty: Unmanaged<CFMutableDictionary>?
-    let cfSerialNumber = IORegistryEntryCreateCFProperties(ioDevice, &cfParentProperty, kCFAllocatorDefault, 0)
-    let strSerialNumber2 = String(cfSerialNumber)
-    print(cfSerialNumber, strSerialNumber2)
-    
-    
-    print(ioDevice, kIOServicePlane)
-    
-    let krReturn: kern_return_t = IORegistryCreateIterator(ioDevice, kIOServicePlane, IOOptionBits(kIORegistryIterateRecursively | kIORegistryIterateParents), &ioParentIterator)
+    let krReturn: kern_return_t = IORegistryEntryCreateIterator(ioDevice, kIOServicePlane, IOOptionBits(kIORegistryIterateRecursively | kIORegistryIterateParents), &ioParentIterator)
     
     IOObjectRelease(ioDevice)
     
-    print(krReturn, KERN_SUCCESS)
-    
     if krReturn != KERN_SUCCESS {
-        return
+        return ""
     }
     
-    let strSerialNumber = ""
-    var ioParentDevice = IOIteratorNext(ioParentIterator)
+    var strSerialNumber = ""
+    var ioParentDevice = io_service_t()
     
-    print("next ::", ioParentDevice)
-    
-    while ioParentDevice != 0 {
+    while true {
+        if ioParentDevice != 0 {
+            break
+        }
+        
+        ioParentDevice = IOIteratorNext(ioParentIterator)
+        
         var cfParentProperty: Unmanaged<CFMutableDictionary>?
         
-        if ( IORegistryEntryCreateCFProperties(ioParentDevice, &cfParentProperty, kCFAllocatorDefault, 0) == KERN_SUCCESS ) {
-            let cfSerialNumber = IORegistryEntryCreateCFProperties(ioParentDevice, UnsafeMutablePointer<Unmanaged<CFMutableDictionary>?>?.init(nilLiteral: ()), kCFAllocatorDefault, 0)
+        if IORegistryEntryCreateCFProperties(ioParentDevice, &cfParentProperty, kCFAllocatorDefault, 0) == KERN_SUCCESS {
             
-            print(cfSerialNumber)
+            var cfSerialNumber = IORegistryEntryCreateCFProperty(ioParentDevice, IOKitKeys.usbSerialNumber, kCFAllocatorDefault, 0)
+            
+            if cfSerialNumber == nil {
+                cfSerialNumber = IORegistryEntryCreateCFProperty(ioParentDevice, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0)
+            } else {
+                strSerialNumber = getStringFromCFTypeRef(cfSerialNumber)
+            }
+            
+            if strSerialNumber.isEmpty == false {
+                break;
+            }
         }
     }
-    
+//    print("serial Num ::", strSerialNumber)
+    return strSerialNumber
 }
 
-var serialNumber: String? { // device
-    let platformExpert = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
+func getStringFromCFTypeRef(_ cfTypeRef: Unmanaged<CFTypeRef>?) -> String {
+    guard let cTR = cfTypeRef else { return "" }
     
-    guard platformExpert > 0 else {
-        return nil
+    var bytes = [Character]()
+    bytes.append("\0")
+    let uint8Pointer = UnsafeMutablePointer<Character>.allocate(capacity: bytes.count)
+    uint8Pointer.initialize(from: &bytes, count: bytes.count)
+    
+    if CFStringGetTypeID() == CFGetTypeID(cTR as! CFString) {
+        CFStringGetCString((cTR as! CFString), uint8Pointer, CFIndex(PATH_MAX), CFStringBuiltInEncodings.UTF8.rawValue)
     }
+}
+
+func addExternalVolumeName() {
     
-    guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String)?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) else {
-        return nil
-    }
-    
-    
-    IOObjectRelease(platformExpert)
-    
-    return serialNumber
 }
