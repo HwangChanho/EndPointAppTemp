@@ -54,11 +54,29 @@ class DiskViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("externalStorage :: ", getExternalVolumeNameList(keys: .externalStorage))
+        print("externalStorage ::", getExternalVolumeNameList(keys: .externalStorage))
         // comboBox external
         
-        print("removableDisk :: ", getExternalVolumeNameList(keys: .removableDisk))
+        print("removableDisk ::", getExternalVolumeNameList(keys: .removableDisk))
         
+        let path = getVolumePath(getExternalVolumeNameList(keys: .externalStorage).first!)
+
+        print("BSD ::", getDiskFromVolume(path), path)
+        
+        print("Disk Info ::", getDiskInfo(getExternalVolumeNameList(keys: .externalStorage).first!))
+
+//        print("unMount ::", unMountDisk(path))
+        
+        print("add mount Observer ::", setMountCallBack( { path in
+            print(path)
+        }))
+        
+        print("add unMount Observer ::", setUnMountCallBack({ path in
+            print(path)
+        }))
+        
+        getSerialNumber(getExternalVolumeNameList(keys: .externalStorage).first!)
+        print(serialNumber)
     }
     
     override var representedObject: Any? {
