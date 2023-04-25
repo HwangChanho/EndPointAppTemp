@@ -41,7 +41,13 @@ enum URLResourceKeyOptions: URLResourceKeyOptionsProtocol {
 class DiskViewController: NSViewController {
     
     @IBOutlet weak var externalDisk: NSComboBox!
-    @IBOutlet weak var textView: NSScrollView!
+    @IBOutlet var textView: NSTextView!
+    
+    private var externalVolumenameListArr: [String] = []
+    private var removableDiskListArr: [String] = []
+    
+    private var isSetMountCallBack = false
+    private var isSetUnMountCallBack = false
     
     private var textViewLineCount = 0
     
@@ -54,30 +60,6 @@ class DiskViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("externalStorage ::", getExternalVolumeNameList(keys: .externalStorage))
-        // comboBox external
-        
-        print("removableDisk ::", getExternalVolumeNameList(keys: .removableDisk))
-        
-        let path = getVolumePath(getExternalVolumeNameList(keys: .externalStorage).first!)
-
-        print("BSD ::", getDiskFromVolume(path), path)
-        
-        print("Disk Info ::", getDiskInfo(getExternalVolumeNameList(keys: .externalStorage).first!))
-
-//        print("unMount ::", unMountDisk(path))
-        
-        print("add mount Observer ::", setMountCallBack( { path in
-            print(path)
-        }))
-        
-        print("add unMount Observer ::", setUnMountCallBack({ path in
-            print(path)
-        }))
-        
-        getSerialNumber(getExternalVolumeNameList(keys: .externalStorage).first!)
-        
-        
     }
     
     override var representedObject: Any? {
@@ -86,12 +68,104 @@ class DiskViewController: NSViewController {
         }
     }
     
+    @IBAction func getExternalVolumeNameButtonClicked(_ sender: NSButton) {
+        externalDisk.removeAllItems()
+        externalVolumenameListArr.removeAll()
+        
+        externalVolumenameListArr = getExternalVolumeNameList(keys: .externalStorage)
+        for item in externalVolumenameListArr {
+            externalDisk.addItem(withObjectValue: item)
+            externalDisk.selectItem(at: 0)
+            textViewLineCount = setTextViewText(self.textView, "ExternalVolumeName : \(item)", textViewLineCount)
+        }
+    }
     
-    @IBAction func getExternalDistListButtonDidTapped(_ sender: Any) {
+    @IBAction func getBSDNameButtonClicked(_ sender: NSButton) {
+        let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        textViewLineCount = setTextViewText(self.textView, getDiskFromVolume(path), textViewLineCount)
+    }
+    
+    @IBAction func unountButtonClicked(_ sender: NSButton) {
+        let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        
+        if unMountDisk(path) {
+            textViewLineCount = setTextViewText(self.textView, "UnmountSucced : \(externalVolumenameListArr[checkItemSelected()])", textViewLineCount)
+        } else {
+            textViewLineCount = setTextViewText(self.textView, "Unmount Failed : \(externalVolumenameListArr[checkItemSelected()])", textViewLineCount)
+        }
+    }
+    
+    @IBAction func getSerialNumberButtonClicked(_ sender: NSButton) {
+        let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        
+        textViewLineCount = setTextViewText(self.textView, "SerialNumber = [\(getSerialNumber(path))]", textViewLineCount)
+    }
+    
+    @IBAction func getDiskInfoButtonClicked(_ sender: NSButton) {
+        let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        guard let diskInfo = getDiskInfo(path) else { return }
+        
+        for key in diskInfo.allKeys {
+            textViewLineCount = setTextViewText(self.textView, "key=[\(key)], value=[\(diskInfo.object(forKey: key) ?? "noInfo")]", textViewLineCount)
+        }
         
     }
     
+    @IBAction func getRemovableDiskListButtonClicked(_ sender: NSButton) {
+        removableDiskListArr.removeAll()
+        removableDiskListArr = getExternalVolumeNameList(keys: .removableDisk)
+        for item in removableDiskListArr {
+            textViewLineCount = setTextViewText(self.textView, "RemovableVolumeName : \(item)", textViewLineCount)
+        }
+    }
     
+    @IBAction func addExternalVolumeNameButtonClicked(_ sender: NSButton) {
+        
+    }
+    
+    @IBAction func delExternalVolumeNameButtonClicked(_ sender: NSButton) {
+        
+    }
+    
+    @IBAction func mountCallBackButtonClicked(_ sender: NSButton) {
+        if isSetMountCallBack {
+            textViewLineCount = setTextViewText(self.textView, "Already Mount CallBack Setted", textViewLineCount)
+        }
+        
+        if !setMountCallBack({ [weak self] path in
+            guard let self else { return }
+            self.textViewLineCount = setTextViewText(self.textView, "Mount CallBack Succeed", self.textViewLineCount)
+            self.isSetMountCallBack = true
+        }) {
+            textViewLineCount = setTextViewText(self.textView, "Mount CallBack Failed", textViewLineCount)
+            return
+        }
+    }
+    
+    @IBAction func unMountCallBackButtonClicked(_ sender: NSButton) {
+        if isSetUnMountCallBack {
+            textViewLineCount = setTextViewText(self.textView, "Already unMount CallBack Setted", textViewLineCount)
+        }
+        
+        if !setUnMountCallBack({ [weak self] path in
+            guard let self else { return }
+            self.textViewLineCount = setTextViewText(self.textView, "unMount CallBack Succeed", self.textViewLineCount)
+            self.isSetUnMountCallBack = true
+        }) {
+            textViewLineCount = setTextViewText(self.textView, "unMount CallBack Failed", textViewLineCount)
+            return
+        }
+    }
+    
+    private func checkItemSelected() -> Int {
+        let index = externalDisk.indexOfSelectedItem
+        
+        if index == -1 {
+            textViewLineCount = setTextViewText(self.textView, "NothingSelected", textViewLineCount)
+        }
+        
+        return index
+    }
     
 }
 

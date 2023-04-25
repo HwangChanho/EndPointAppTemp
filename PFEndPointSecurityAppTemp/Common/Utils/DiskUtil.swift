@@ -16,31 +16,7 @@ enum RootVolumePath {
     static let devicePath = "NSDevicePath"
 }
 
-enum IOKitKeys {
-    static let serialNumber: CFString = "Serial Number" as CFString
-    static let usbSerialNumber: CFString = "USB Serial Number" as CFString
-}
-
-func setTextViewText(_ textView: NSTextView, _ text: String, _ textViewLineCount: Int) -> Int {
-    let lineCountToString = String(textViewLineCount)
-    textView.textStorage?.append(NSAttributedString(string: lineCountToString + " ::  " + text + "\n"))
-    
-    if let textLength = textView.textStorage?.length {
-        textView.textStorage?.setAttributes([.foregroundColor: NSColor.white, .font: NSFont.systemFont(ofSize: 13)], range: NSRange(location: 0, length: textLength))
-    }
-    
-    return textViewLineCount + 1
-}
-
-func krReturnToString (_ kr: kern_return_t) -> String {
-    if let cStr = mach_error_string(kr) {
-        return String (cString: cStr)
-    } else {
-        return "Unknown kernel error \(kr)"
-    }
-}
-
-// Disk
+// MARK: Disk
 func getExternalVolumeNameList(keys: URLResourceKeyOptions) -> [String] {
     let filemanager = FileManager()
     let paths = filemanager.mountedVolumeURLs(includingResourceValuesForKeys: keys.keys, options: .produceFileReferenceURLs)
@@ -181,7 +157,7 @@ func setUnMountCallBack(_ completionHandler: @escaping (Any?) -> Void) -> Bool  
     return true
 }
 
-func getDiskInfo(_ volumeName: String) -> CFDictionary? {
+func getDiskInfo(_ volumeName: String) -> NSDictionary? {
     guard let daDisk = getDADiskFromeVolume(volumeName) else { return nil }
     
     guard let dictDADisk = DADiskCopyDescription(daDisk) else { return nil }

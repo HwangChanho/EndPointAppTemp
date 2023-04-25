@@ -911,6 +911,9 @@
                                     </button>
                                     <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="1Zb-Aa-aOn">
                                         <rect key="frame" x="82" y="12" width="42" height="25"/>
+                                        <connections>
+                                            <action selector="powerToggleSwitchDidTapped:" target="eAc-ok-2QU" id="dph-r1-cLQ"/>
+                                        </connections>
                                     </switch>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9PK-nd-tsL">
                                         <rect key="frame" x="125" y="17" width="52" height="16"/>
@@ -1044,7 +1047,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="getExternalDistListButtonDidTapped:" target="I6s-a5-ygN" id="N1d-1S-3wu"/>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="hw7-zr-WcR"/>
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nK-IW-YeR">
@@ -1061,6 +1064,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="getBSDNameButtonClicked:" target="I6s-a5-ygN" id="CTt-ox-fxM"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ctV-wB-JVS">
                                 <rect key="frame" x="3" y="553" width="194" height="32"/>
@@ -1068,6 +1074,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="getSerialNumberButtonClicked:" target="I6s-a5-ygN" id="X9w-wh-Lcv"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kcL-pG-pqA">
                                 <rect key="frame" x="3" y="493" width="194" height="32"/>
@@ -1075,6 +1084,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="getRemovableDiskListButtonClicked:" target="I6s-a5-ygN" id="rKy-yc-UYO"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rUa-RV-ixQ">
                                 <rect key="frame" x="3" y="453" width="194" height="32"/>
@@ -1082,6 +1094,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="6la-hw-9Oj"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pgJ-hV-4n7">
                                 <rect key="frame" x="3" y="423" width="194" height="32"/>
@@ -1089,6 +1104,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="delExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="qb8-j6-0HX"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bSI-oi-67m">
                                 <rect key="frame" x="3" y="353" width="194" height="32"/>
@@ -1096,6 +1114,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="unMountCallBackButtonClicked:" target="I6s-a5-ygN" id="TZ1-Jx-lzd"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xBT-tU-mJv">
                                 <rect key="frame" x="3" y="583" width="194" height="32"/>
@@ -1103,6 +1124,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="unountButtonClicked:" target="I6s-a5-ygN" id="fWr-cq-tEY"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lhs-5a-k8V">
                                 <rect key="frame" x="3" y="523" width="194" height="32"/>
@@ -1110,6 +1134,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="getDiskInfoButtonClicked:" target="I6s-a5-ygN" id="DCo-rw-Wr2"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-AY-TN1">
                                 <rect key="frame" x="3" y="383" width="194" height="32"/>
@@ -1117,6 +1144,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="mountCallBackButtonClicked:" target="I6s-a5-ygN" id="yxo-eC-hYJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1162,7 +1192,7 @@
                     </view>
                     <connections>
                         <outlet property="externalDisk" destination="9nK-IW-YeR" id="heo-HW-FXh"/>
-                        <outlet property="textView" destination="M1B-Vv-fNt" id="DzG-PT-zcu"/>
+                        <outlet property="textView" destination="WNS-C7-OWF" id="LtR-6L-PqU"/>
                     </connections>
                 </viewController>
                 <customObject id="fgC-nJ-S4Q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
