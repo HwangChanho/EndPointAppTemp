@@ -100,8 +100,14 @@ func getDocumentInfo() -> String {
     return logString
 }
 
-func checkBluetooth() {
-    let test = objcClass()
+func checkBluetooth() -> Bool {
+    let objc = CPPWrapper()
     
-    print(test.getPowerState())
+    return objc.getPowerState()
+}
+
+func setPower(_ onOff: BlueToothPower) {
+    let objc = CPPWrapper()
+    
+    objc.setPower(onOff.state)
 }

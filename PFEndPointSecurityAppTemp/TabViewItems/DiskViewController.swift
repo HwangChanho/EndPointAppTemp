@@ -54,7 +54,6 @@ class DiskViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        
     }
     
     override func viewDidLoad() {

@@ -8,6 +8,20 @@
 import Cocoa
 import IOBluetooth
 
+enum BlueToothPower: Int {
+    case on = 1
+    case off = 0
+    
+    var state: Bool {
+        switch self {
+        case .on:
+            return true
+        case .off:
+            return false
+        }
+    }
+}
+
 class BluetoothViewController: NSViewController {
     @IBOutlet weak var connectedDeviceList: NSComboBox!
     @IBOutlet weak var pairedDeviceList: NSComboBox!
@@ -25,8 +39,6 @@ class BluetoothViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        checkBluetooth()
     }
     
     override var representedObject: Any? {
@@ -113,29 +125,26 @@ class BluetoothViewController: NSViewController {
     }
     
     @IBAction func powerToggleSwitchDidTapped(_ sender: NSSwitch) {
-        print(sender.state)
-        switch sender.state.rawValue {
-        case 1:
-            setLog("Power is On")
-        case 0:
-            setLog("Power is Off")
+        let btPowerState = BlueToothPower(rawValue: sender.state.rawValue)
+        
+        switch btPowerState {
+        case .on: // true
+            setPower(.on)
+            setLog("Power On")
+        case .off: // false
+            setPower(.off)
+            setLog("Power Off")
         default:
             setLog("default")
         }
     }
     
     @IBAction func checkButtonDidTapped(_ sender: NSButton) {
-
-        
-        switch IOBluetoothHostController().powerState.rawValue {
-        case 1:
+        if checkBluetooth() {
             setLog("Power is On")
             powerToggle.state = .on
-        case 2:
+        } else {
             setLog("Power is Off")
-            powerToggle.state = .off
-        default:
-            setLog("default")
             powerToggle.state = .off
         }
     }
