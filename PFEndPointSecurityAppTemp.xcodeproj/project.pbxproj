@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 127F000129F8EAD100AC5A61 /* btUtil.cpp */; };
 		127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 127F000429F8EAE800AC5A61 /* btUtilWrapper.mm */; };
+		127F000D29FB63D200AC5A61 /* XPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F000C29FB63D200AC5A61 /* XPCManager.swift */; };
 		127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */; };
 		FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284C29F75825002FACC3 /* BlueToothUtil.swift */; };
 		FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284F29F7584E002FACC3 /* CommonUtil.swift */; };
@@ -48,6 +49,7 @@
 		127F000429F8EAE800AC5A61 /* btUtilWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = btUtilWrapper.mm; sourceTree = "<group>"; };
 		127F000629F8EAF900AC5A61 /* btUtilWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = btUtilWrapper.h; sourceTree = "<group>"; };
 		127F000A29F9202C00AC5A61 /* PFEndPointSecurityAppTemp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PFEndPointSecurityAppTemp-Bridging-Header.h"; sourceTree = "<group>"; };
+		127F000C29FB63D200AC5A61 /* XPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCManager.swift; sourceTree = "<group>"; };
 		127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
 		FB06284C29F75825002FACC3 /* BlueToothUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothUtil.swift; sourceTree = "<group>"; };
 		FB06284F29F7584E002FACC3 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		127F000B29FB63B100AC5A61 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				127F000C29FB63D200AC5A61 /* XPCManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		FB06284B29F7580C002FACC3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				FB06285429F7BB98002FACC3 /* Bridge */,
+				127F000B29FB63B100AC5A61 /* Manager */,
 				FB95D4BF29F0BD1C00F126B5 /* Common */,
 				FB95D4BC29EFCF2100F126B5 /* TabViewItems */,
 				FB95D49129EFB1E600F126B5 /* AppDelegate.swift */,
@@ -326,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB95D4BE29EFCF3F00F126B5 /* BluetoothViewController.swift in Sources */,
+				127F000D29FB63D200AC5A61 /* XPCManager.swift in Sources */,
 				FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */,
 				FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */,
 				127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */,

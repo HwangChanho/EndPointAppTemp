@@ -39,7 +39,6 @@ enum URLResourceKeyOptions: URLResourceKeyOptionsProtocol {
 }
 
 class DiskViewController: NSViewController {
-    
     @IBOutlet weak var externalDisk: NSComboBox!
     @IBOutlet var textView: NSTextView!
     
@@ -119,6 +118,9 @@ class DiskViewController: NSViewController {
     }
     
     @IBAction func addExternalVolumeNameButtonClicked(_ sender: NSButton) {
+        let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        
+        addExternalVolumeName(path, self)
         
     }
     
