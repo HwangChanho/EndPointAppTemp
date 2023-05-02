@@ -18,9 +18,24 @@ final class XPCManager: NSObject, JDProviderCommunication {
     var connectionList: NSMutableDictionary?
     var providerDelegate: JDProviderCommunication?
     var currentConnection: NSXPCConnection?
+    var listener: NSXPCListener?
     
     weak var JDProviderCommunication: Protocol?
     weak var JDAppCommunication: Protocol?
+    
+    func sendDataFromProviderWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+        
+    }
+    
+    func sendDataFromAppWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+        
+    }
+    
+    func sendDataWithDictionaryWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+        if listener == nil {
+            return
+        }
+    }
     
     func extensionMachServiceNameFromBundle(bundle: Bundle) -> NSString {
         let dictNetworkExtensionKey: NSDictionary = bundle.object(forInfoDictionaryKey: Constant.NSKey.KEY_NETWORK_EXTENSION) as! NSDictionary

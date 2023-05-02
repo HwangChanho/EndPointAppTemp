@@ -10,6 +10,8 @@
 		127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 127F000129F8EAD100AC5A61 /* btUtil.cpp */; };
 		127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 127F000429F8EAE800AC5A61 /* btUtilWrapper.mm */; };
 		127F000D29FB63D200AC5A61 /* XPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F000C29FB63D200AC5A61 /* XPCManager.swift */; };
+		127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F000E2A01374900AC5A61 /* OddUtil.swift */; };
+		127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F00102A01376A00AC5A61 /* OddViewController.swift */; };
 		127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */; };
 		FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284C29F75825002FACC3 /* BlueToothUtil.swift */; };
 		FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284F29F7584E002FACC3 /* CommonUtil.swift */; };
@@ -50,6 +52,8 @@
 		127F000629F8EAF900AC5A61 /* btUtilWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = btUtilWrapper.h; sourceTree = "<group>"; };
 		127F000A29F9202C00AC5A61 /* PFEndPointSecurityAppTemp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PFEndPointSecurityAppTemp-Bridging-Header.h"; sourceTree = "<group>"; };
 		127F000C29FB63D200AC5A61 /* XPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCManager.swift; sourceTree = "<group>"; };
+		127F000E2A01374900AC5A61 /* OddUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddUtil.swift; sourceTree = "<group>"; };
+		127F00102A01376A00AC5A61 /* OddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddViewController.swift; sourceTree = "<group>"; };
 		127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
 		FB06284C29F75825002FACC3 /* BlueToothUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothUtil.swift; sourceTree = "<group>"; };
 		FB06284F29F7584E002FACC3 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				FB06285129F769FD002FACC3 /* BlueTooth */,
 				FB95D4C429F121A600F126B5 /* DiskUtil.swift */,
 				FB06284F29F7584E002FACC3 /* CommonUtil.swift */,
+				127F000E2A01374900AC5A61 /* OddUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */,
 				FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */,
 				127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */,
+				127F00102A01376A00AC5A61 /* OddViewController.swift */,
 			);
 			path = TabViewItems;
 			sourceTree = "<group>";
@@ -342,9 +348,11 @@
 				FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */,
 				127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */,
 				127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */,
+				127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */,
 				FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */,
 				FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
+				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
 				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,
 				FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */,
 				FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */,
