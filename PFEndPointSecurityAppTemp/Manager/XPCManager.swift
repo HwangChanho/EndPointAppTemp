@@ -5,14 +5,21 @@
 //  Created by AlexHwang on 2023/04/28.
 //
 
+/*
+
 import Foundation
+import AppKit
 
 protocol JDProviderCommunication: NSObject {
     func registerWithCompletionHandler(_ appID: NSString, WithCompletionHandler completionHandler: @escaping (Bool) -> ())
     func receiveDataWithDictionary(_ data: NSDictionary, appID: NSString, completionHandler reply: @escaping (Bool) -> ())
 }
 
-final class XPCManager: NSObject, JDProviderCommunication {
+protocol JDAppCommunication: NSObject {
+    func ReceiveDataWithDictionaryWithCompletionHandler(_ data: NSDictionary?, _ reply: Bool)
+}
+
+final class XPCManager: NSObject, JDProviderCommunication, JDAppCommunication {
     static let shared = XPCManager()
     
     var connectionList: NSMutableDictionary?
@@ -20,21 +27,76 @@ final class XPCManager: NSObject, JDProviderCommunication {
     var currentConnection: NSXPCConnection?
     var listener: NSXPCListener?
     
-    weak var JDProviderCommunication: Protocol?
-    weak var JDAppCommunication: Protocol?
-    
-    func sendDataFromProviderWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+    func ReceiveDataWithDictionaryWithCompletionHandler(_ data: NSDictionary?, _ reply: Bool) {
         
     }
     
-    func sendDataFromAppWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+    func registerWithMachServiceNameWithDelegateWithAppIDWithCompletionHandler(_ machServiceName: NSString, _ delegate: NSObjet<JDAppCommunication>, _ appID: NSString, _ completionHandler: @escaping (Bool) -> Void) {
+        if currentConnection == nil {
+            let options: Options = {0}
+            let newConnection: NSXPCConnection = NSXPCConnection.init(machServiceName: machServiceName, options: options)
+            
+            newConnection.exportedInterface = NSXPCInterface.init(protocol: JDAppCommunication)
+            newConnection.exportedObject = delegate
+            currentConnection = newConnection
+            newConnection.resume()
+            
+//            let providerProxy: NSObject<JDProviderCommunication> = newConnection
+        }
+    }
+    
+    func registerWithBundleWithDelegateWithAppIDWithCompletionHandler(_ bundle: Bundle, _ delegate: NSObjet<JDAppCommunication>, _ appID: NSString, _ completionHandler: @escaping (Bool) -> Void) {
+        if currentConnection == nil {
+            let machServiceName: NSString = self.extensionMachServiceNameFromBundle(bundle: bundle)
+//            self.
+        }
+    }
+    
+    func sendDataFromProviderWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+        guard let connection: NSXPCConnection = connectionList?.object(forKey: appID) else { return false }
         
+        let appProxy: NSObject<JDAppCommunication> = connection.synchronousRemoteObjectProxyWithErrorHandler { err in
+            print("Failed to XPC to app with data : \(err)")
+            self.connectionList?.removeObject(forKey: appID)
+            responseHandler(true)
+        }
+        
+        appProxy(ReceiveDataWithDictionaryWithCompletionHandler(data, responseHandler))
+        
+        if self.connectionList?.object(forKey: appID) == nil {
+            return false
+        }
+        
+        return true
+    }
+    
+    func sendDataFromAppWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+        let providerProxy: NSObject = currentConnection?.synchronousRemoteObjectProxyWithErrorHandler({ err in
+            print("Failed to register with the provider : \(err)")
+            if self.currentConnection != nil {
+                self.currentConnection?.invalidate()
+                self.currentConnection = nil
+            }
+            responseHandler(false)
+        }) as! NSObject
+        
+        if providerProxy == nil { return false }
+        
+        receiveDataWithDictionary(data, appID: appID, completionHandler: responseHandler)
+        
+        return true
     }
     
     func sendDataWithDictionaryWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
         if listener == nil {
-            return
+            return sendDataFromAppWithAppIDWithResponseHandler(data, appID: appID, responseHandler: responseHandler)
         }
+        
+        if appID != nil {
+            return sendDataFromProviderWithAppIDWithResponseHandler(data, appID: appID, responseHandler: responseHandler)
+        }
+        
+        return false
     }
     
     func extensionMachServiceNameFromBundle(bundle: Bundle) -> NSString {
@@ -87,3 +149,6 @@ final class XPCManager: NSObject, JDProviderCommunication {
         return connectionList!.allKeys as NSArray
     }
 }
+
+
+*/

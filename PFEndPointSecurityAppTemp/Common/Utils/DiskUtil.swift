@@ -237,7 +237,7 @@ func getSerialNumber(_ volumeName: String) -> String {
             }
         }
     }
-//    print("serial Num ::", strSerialNumber)
+    //    print("serial Num ::", strSerialNumber)
     return strSerialNumber
 }
 
@@ -265,10 +265,21 @@ func addExternalVolumeName(_ path: String, _ vc: NSViewController) {
     }
 }
 
-func sendClientData(_ dictSendData: NSDictionary) {
+func sendClientData(_ dictSendData: NSDictionary) -> Bool {
     let appID = "\(Constant.AppKey.APP_ID)_\(getpid())"
+    let xpcManager = XPCManager.shared
+    var bSucceed = false
     
-   
+    xpcManager.sendDataWithDictionaryWithAppIDWithResponseHandler(dictSendData, appID: appID as NSString) { bool in
+        if bool {
+            bSucceed = true
+            // "Successfully SendData"
+        } else {
+            // "SendData failed"
+        }
+    }
+    
+    return bSucceed
 }
 
 

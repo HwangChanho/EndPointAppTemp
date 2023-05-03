@@ -119,8 +119,11 @@ class DiskViewController: NSViewController {
     
     @IBAction func addExternalVolumeNameButtonClicked(_ sender: NSButton) {
         let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        let name = externalVolumenameListArr[checkItemSelected()]
         
-        addExternalVolumeName(path, self)
+        let dictSendData = NSMutableDictionary()
+        dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.ExternalStorageVolumePath.rawValue), forKey: POLICY.KEY_ADD_POLICY as NSCopying)
+        dictSendData.setObject(path, forKey: POLICY.KEY_ADD_POLICY as NSCopying)
         
     }
     
