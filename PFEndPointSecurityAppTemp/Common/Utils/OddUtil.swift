@@ -89,10 +89,12 @@ class OddUtilManager: NSObject {
         }
         
         var ioNextDevice = io_object_t()
-        while (ioNextDevice = IOIteratorNext(ioIterator)) != 0 {
+        
+        while ioNextDevice != 0 {
             var strBsdName = getBsdNameFromIOObject(ioNextDevice)
             vBsdNameList.append(strBsdName)
             IOObjectRelease(ioNextDevice)
+            ioNextDevice = IOIteratorNext(ioIterator)
         }
         IOObjectRelease(ioIterator)
         mach_port_deallocate(mach_task_self_, machPortMaster)
@@ -139,9 +141,24 @@ class OddUtilManager: NSObject {
         var cfIOServiceMachting: CFMutableDictionary? = nil
         
         cfIOServiceMachting = IOServiceMatching("IODVDMedia")
-        
         if cfIOServiceMachting != nil {
-            
+            if getBsdNameListFromClassMatchService(cfIOServiceMachting!, &vBsdNameList) == false {
+                print("IODVDMedia")
+            }
+        }
+        
+        cfIOServiceMachting = IOServiceMatching("IOCDMedia")
+        if cfIOServiceMachting != nil {
+            if getBsdNameListFromClassMatchService(cfIOServiceMachting!, &vBsdNameList) == false {
+                print("IOCDMedia")
+            }
+        }
+        
+        cfIOServiceMachting = IOServiceMatching("IOBDMedia")
+        if cfIOServiceMachting != nil {
+            if getBsdNameListFromClassMatchService(cfIOServiceMachting!, &vBsdNameList) == false {
+                print("IOBDMedia")
+            }
         }
     }
 }
