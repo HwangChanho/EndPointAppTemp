@@ -1233,9 +1233,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-eg-DJ3">
+                                <rect key="frame" x="3" y="593" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="ODD Information" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7e9-5t-0nv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="3Fd-eC-FKK"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="35Z-sn-5YB">
                                 <rect key="frame" x="3" y="673" width="194" height="32"/>
-                                <buttonCell key="cell" type="push" title="GetExternalVolumeName" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Clu-Bo-Rc7">
+                                <buttonCell key="cell" type="push" title="GetBSDNameList" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Clu-Bo-Rc7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1244,29 +1254,124 @@
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wS-ZK-F8j">
-                                <rect key="frame" x="9" y="648" width="184" height="23"/>
+                                <rect key="frame" x="9" y="638" width="184" height="23"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" completes="NO" numberOfVisibleItems="5" id="C5V-L7-p7f">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
                             </comboBox>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b6i-Yw-U57">
+                                <rect key="frame" x="3" y="553" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="GetSerialNumber" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="obe-EJ-8sF">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="5vL-3Y-dhI"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RKe-gm-hPP">
+                                <rect key="frame" x="3" y="513" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Eject" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h2R-rq-TeP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="Pjz-lj-FFV"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RB8-9O-i1t">
+                                <rect key="frame" x="3" y="463" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="ConnectCallBack" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yEt-TY-Xas">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="kyJ-Ro-yio"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="slf-pN-zdA">
+                                <rect key="frame" x="3" y="413" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="DisConnectCallBack" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WhP-Ua-37F">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="anS-TC-CeY"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DNn-sY-ebC">
+                                <rect key="frame" x="3" y="293" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="SetOddPolicy(ReadOnly)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XOY-so-TAp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="aQN-mz-GfA"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FGY-BV-ceW">
+                                <rect key="frame" x="3" y="263" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="SetOddPolicy(PDRCheck)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f6z-mz-B47">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="zJJ-Kd-vUE"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H2C-Wu-n8V">
+                                <rect key="frame" x="3" y="323" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="SetOddPolicy(None)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kCG-E2-aQh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="getExternalVolumeNameButtonClicked:" target="I6s-a5-ygN" id="vTH-cF-21r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="slf-pN-zdA" secondAttribute="trailing" constant="10" id="3Cx-eb-246"/>
+                            <constraint firstItem="mhi-eg-DJ3" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="5Qt-RH-yhr"/>
+                            <constraint firstItem="RKe-gm-hPP" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="5S2-uI-6jI"/>
                             <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="1wS-ZK-F8j" secondAttribute="trailing" constant="10" id="5xo-XR-TWA"/>
+                            <constraint firstItem="slf-pN-zdA" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="7Za-iq-cuT"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="RB8-9O-i1t" secondAttribute="trailing" constant="10" id="8TK-eX-ShL"/>
+                            <constraint firstItem="FGY-BV-ceW" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="8fk-1S-LrA"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="DNn-sY-ebC" secondAttribute="trailing" constant="10" id="Esy-ec-WxC"/>
+                            <constraint firstItem="b6i-Yw-U57" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="F3S-82-fJs"/>
+                            <constraint firstItem="mhi-eg-DJ3" firstAttribute="top" secondItem="1wS-ZK-F8j" secondAttribute="bottom" constant="20" id="GMA-7r-9gq"/>
+                            <constraint firstItem="H2C-Wu-n8V" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="GNE-ma-Zqm"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="FGY-BV-ceW" secondAttribute="trailing" constant="10" id="IHq-id-NFW"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="RKe-gm-hPP" secondAttribute="trailing" constant="10" id="J3M-Lb-P76"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="H2C-Wu-n8V" secondAttribute="trailing" constant="10" id="L3k-sa-K5n"/>
                             <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="35Z-sn-5YB" secondAttribute="trailing" constant="10" id="Lle-RI-HSD"/>
                             <constraint firstAttribute="bottom" secondItem="Ho8-s9-8XJ" secondAttribute="bottom" id="Lp5-dT-Aun"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="b6i-Yw-U57" secondAttribute="trailing" constant="10" id="Nij-dv-IAW"/>
+                            <constraint firstItem="RB8-9O-i1t" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="OMN-XD-jIL"/>
                             <constraint firstItem="35Z-sn-5YB" firstAttribute="top" secondItem="6x2-Fr-FHu" secondAttribute="top" constant="10" id="R8p-dY-WUt"/>
+                            <constraint firstItem="DNn-sY-ebC" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="SKp-1e-nBm"/>
+                            <constraint firstItem="b6i-Yw-U57" firstAttribute="top" secondItem="mhi-eg-DJ3" secondAttribute="bottom" constant="20" id="Sne-ki-3Xl"/>
+                            <constraint firstItem="slf-pN-zdA" firstAttribute="top" secondItem="RB8-9O-i1t" secondAttribute="bottom" constant="30" id="StU-nN-bur"/>
+                            <constraint firstItem="RB8-9O-i1t" firstAttribute="top" secondItem="RKe-gm-hPP" secondAttribute="bottom" constant="30" id="XIQ-Nr-Z9p"/>
                             <constraint firstItem="35Z-sn-5YB" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="Xig-bZ-4jr"/>
                             <constraint firstItem="1wS-ZK-F8j" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="10" id="YsG-Ju-zfq"/>
                             <constraint firstItem="1wS-ZK-F8j" firstAttribute="height" secondItem="35Z-sn-5YB" secondAttribute="height" id="ak9-kb-LoJ"/>
+                            <constraint firstItem="FGY-BV-ceW" firstAttribute="top" secondItem="DNn-sY-ebC" secondAttribute="bottom" constant="10" id="bbU-91-3FK"/>
+                            <constraint firstItem="RKe-gm-hPP" firstAttribute="top" secondItem="b6i-Yw-U57" secondAttribute="bottom" constant="20" id="i6j-xN-X72"/>
                             <constraint firstAttribute="trailing" secondItem="Ho8-s9-8XJ" secondAttribute="trailing" id="sfQ-Fi-SeE"/>
+                            <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="mhi-eg-DJ3" secondAttribute="trailing" constant="10" id="u7H-bU-ZFs"/>
                             <constraint firstItem="Ho8-s9-8XJ" firstAttribute="leading" secondItem="6x2-Fr-FHu" secondAttribute="leading" constant="200" id="uhs-gL-Hqw"/>
-                            <constraint firstItem="1wS-ZK-F8j" firstAttribute="top" secondItem="35Z-sn-5YB" secondAttribute="bottom" constant="10" id="x9Z-tQ-FJh"/>
+                            <constraint firstItem="DNn-sY-ebC" firstAttribute="top" secondItem="H2C-Wu-n8V" secondAttribute="bottom" constant="10" id="wfS-ky-YCN"/>
+                            <constraint firstItem="1wS-ZK-F8j" firstAttribute="top" secondItem="35Z-sn-5YB" secondAttribute="bottom" constant="20" id="x9Z-tQ-FJh"/>
+                            <constraint firstItem="H2C-Wu-n8V" firstAttribute="top" secondItem="slf-pN-zdA" secondAttribute="bottom" constant="70" id="xng-pZ-7RR"/>
                             <constraint firstItem="Ho8-s9-8XJ" firstAttribute="top" secondItem="6x2-Fr-FHu" secondAttribute="top" constant="5" id="zjd-aX-sf3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="BSDNameList" destination="1wS-ZK-F8j" id="229-DX-ait"/>
                         <outlet property="textView" destination="MyB-Ss-E58" id="CZo-Hw-wp2"/>
                     </connections>
                 </viewController>

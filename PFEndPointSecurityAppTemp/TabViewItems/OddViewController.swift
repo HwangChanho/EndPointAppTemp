@@ -9,6 +9,7 @@ import Cocoa
 
 class OddViewController: NSViewController {
     
+    @IBOutlet weak var BSDNameList: NSComboBox!
     @IBOutlet var textView: NSTextView!
     
     private var pairedDeviceListArr: [String] = []
@@ -16,7 +17,6 @@ class OddViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         getBsdNameListButtonClick()
     }
@@ -27,6 +27,12 @@ class OddViewController: NSViewController {
         manager.getConnectBsdNameList(&pairedDeviceListArr)
         
         print("paired Device :: ", pairedDeviceListArr)
+    }
+    
+    private func getOddInfo() {
+        let selected = BSDNameList.indexOfSelectedItem
+        
+        
     }
     
 }
