@@ -26,6 +26,9 @@
 		FB95D4BE29EFCF3F00F126B5 /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */; };
 		FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4C229F0DD3E00F126B5 /* Constant.swift */; };
 		FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D4C429F121A600F126B5 /* DiskUtil.swift */; };
+		FBBB4BE12A11E3910007DDE3 /* IODetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB4BE02A11E3910007DDE3 /* IODetector.swift */; };
+		FBBB4BE32A11FCAE0007DDE3 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB4BE22A11FCAE0007DDE3 /* NetworkViewController.swift */; };
+		FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBB4BE42A12015F0007DDE3 /* NetworkUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
 		FB95D4C229F0DD3E00F126B5 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FB95D4C429F121A600F126B5 /* DiskUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskUtil.swift; sourceTree = "<group>"; };
+		FBBB4BE02A11E3910007DDE3 /* IODetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IODetector.swift; sourceTree = "<group>"; };
+		FBBB4BE22A11FCAE0007DDE3 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		FBBB4BE42A12015F0007DDE3 /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,8 @@
 				FB95D4C429F121A600F126B5 /* DiskUtil.swift */,
 				FB06284F29F7584E002FACC3 /* CommonUtil.swift */,
 				127F000E2A01374900AC5A61 /* OddUtil.swift */,
+				FBBB4BE02A11E3910007DDE3 /* IODetector.swift */,
+				FBBB4BE42A12015F0007DDE3 /* NetworkUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				FB95D4BD29EFCF3E00F126B5 /* BluetoothViewController.swift */,
 				127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */,
 				127F00102A01376A00AC5A61 /* OddViewController.swift */,
+				FBBB4BE22A11FCAE0007DDE3 /* NetworkViewController.swift */,
 			);
 			path = TabViewItems;
 			sourceTree = "<group>";
@@ -351,11 +360,14 @@
 				127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */,
 				FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */,
 				FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */,
+				FBBB4BE12A11E3910007DDE3 /* IODetector.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
+				FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */,
 				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
 				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,
 				FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */,
 				FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */,
+				FBBB4BE32A11FCAE0007DDE3 /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
