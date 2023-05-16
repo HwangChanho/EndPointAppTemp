@@ -8,29 +8,31 @@
 import Foundation
 import SystemConfiguration
 
-let HARDWARE               = "Hardware"
-let HARDWARE_ETHERNET      = "Ethernet"
-let HARDWARE_AIR_PORT      = "AirPort"
-let HARDWARE_MODEM         = "Modem"
-let HARDWARE_THUNDERBOLT   = "Thunderbolt"
-let LEFT_CURLY_BRAKET      = "{"
-let COMMA_SPACE            = ", "
-
-let INTERFACE_APPLE_WIRELESS_DIRECT_LINK   = "awdl"
-let INTERFACE_FIRE_WIRE                    = "fw"
-let INTERFACE_BRIDGE                       = "vmenet"
-
-let SERVICE_USB                            = "USB"
-let SERVICE_BLUETOOTH_PAN                  = "Bluetooth PAN"
-
-let STATE_NETWORK_GLOBAL_IPV4          = "State:/Network/Global/IPv4"
-let STATE_NETWORK_INTERFACE_ALL_LINK   = "State:/Network/Interface/[^/]+/Link"
-let PRIMARY_INTERFACE                  = "PrimaryInterface"
-
-let SETUP_NETWORK_GLOBAL_IPV4         = "Setup:/Network/Global/IPv4"
-let NETWORK_INTERFACE_DETECTOR        = "NetworkInterfaceDetector"
-let LOOP_BACK_INTERFACE               = "lo"
-let NETWORK_INTERFACE_ACTIVE          = "Network Interface Active"
+enum NetworkNameSpace: String {
+    case HARDWARE               = "Hardware"
+    case HARDWARE_ETHERNET      = "Ethernet"
+    case HARDWARE_AIR_PORT      = "AirPort"
+    case HARDWARE_MODEM         = "Modem"
+    case HARDWARE_THUNDERBOLT   = "Thunderbolt"
+    case LEFT_CURLY_BRAKET      = "{"
+    case COMMA_SPACE            = ", "
+    
+    case INTERFACE_APPLE_WIRELESS_DIRECT_LINK   = "awdl"
+    case INTERFACE_FIRE_WIRE                    = "fw"
+    case INTERFACE_BRIDGE                       = "vmenet"
+    
+    case SERVICE_USB                            = "USB"
+    case SERVICE_BLUETOOTH_PAN                  = "Bluetooth PAN"
+    
+    case STATE_NETWORK_GLOBAL_IPV4          = "State:/Network/Global/IPv4"
+    case STATE_NETWORK_INTERFACE_ALL_LINK   = "State:/Network/Interface/[^/]+/Link"
+    case PRIMARY_INTERFACE                  = "PrimaryInterface"
+    
+    case SETUP_NETWORK_GLOBAL_IPV4         = "Setup:/Network/Global/IPv4"
+    case NETWORK_INTERFACE_DETECTOR        = "NetworkInterfaceDetector"
+    case LOOP_BACK_INTERFACE               = "lo"
+    case NETWORK_INTERFACE_ACTIVE          = "Network Interface Active"
+}
 
 class NetworkUtil: NSObject {
     static let shared = NetworkUtil()
@@ -40,47 +42,110 @@ class NetworkUtil: NSObject {
         return CFBridgingRetain(SCNetworkInterfaceCopyAll()) as? NSArray
     }
     
-    func getActiveNicName(_ vActiveNicName: inout [String]) -> Bool {
-        vActiveNicName.removeAll()
+    func getServiceInfo(_ nicName: String) -> NSDictionary? {
+        guard let scStore: SCDynamicStore = SCDynamicStoreCreate(nil, NetworkNameSpace.NETWORK_INTERFACE_ACTIVE.rawValue as CFString, nil, nil) else { return nil }
         
-        do {
-            guard let scStore: SCDynamicStore = SCDynamicStoreCreate(nil, NETWORK_INTERFACE_ACTIVE as CFString, nil, nil) else {
-                return false
-            }
+        
+    }
+    
+    func getServiceName(_ nicName: String, _ completion: @escaping (String) -> ()) -> Bool {
+        guard let scStore: SCDynamicStore = SCDynamicStoreCreate(nil, NetworkNameSpace.NETWORK_INTERFACE_ACTIVE.rawValue as CFString, nil, nil) else { return false }
+        
+        let cfGlobalInterfaces: CFArray?
+        let cfGlobalPropList: CFDictionary = SCDynamicStoreCopyValue(scStore, NetworkNameSpace.SETUP_NETWORK_GLOBAL_IPV4.rawValue as CFString) as! CFDictionary
+        cfGlobalInterfaces = ((cfGlobalPropList as NSDictionary)["ServiceOrder"] as! CFArray)
+        for index in 1...CFArrayGetCount(cfGlobalInterfaces) {
+            let cfGlobalInterface: CFString = unsafeBitCast(CFArrayGetValueAtIndex(cfGlobalInterfaces, index), to: CFString.self)
+            let cfKey: CFString = SCDynamicStoreKeyCreateNetworkServiceEntity(nil, kSCDynamicStoreDomainSetup, cfGlobalInterface, kSCEntNetInterface)
             
-            let cfInterfaces: CFString = SCDynamicStoreKeyCreateNetworkInterface(nil, kSCDynamicStoreDomainState)
-            let cfPropList: CFDictionary = SCDynamicStoreCopyValue(scStore, cfInterfaces) as! CFDictionary
-            let cfNetInterfaces: CFArray = CFDictionaryGetValue(cfPropList, unsafeBitCast(kSCDynamicStorePropNetInterfaces, to: UnsafeRawPointer.self)) as! CFArray
-            
-            for i in 0..<CFArrayGetCount(cfNetInterfaces) {
-                let cfInterFace: CFString = CFArrayGetValueAtIndex(cfNetInterfaces, i) as! CFString
-                if CFStringFind(cfInterfaces, LOOP_BACK_INTERFACE as CFString, CFStringCompareFlags.compareAnchored).location != kCFNotFound {
-                    continue
-                }
+            let cfServiceDic: CFDictionary = (SCDynamicStoreCopyValue(scStore, cfKey) as! CFDictionary)
+            if let cfInterfaceName = ((cfServiceDic as NSDictionary)["DeviceName"]) {
+                let pszInterfaceName = UnsafeMutablePointer<CChar>.allocate(capacity: CFStringGetLength((cfInterfaceName as! CFString)) + 1)
+                CFStringGetCString((cfInterfaceName as! CFString), pszInterfaceName, CFStringGetLength((cfInterfaceName as! CFString)) + 1, CFStringBuiltInEncodings.UTF8.rawValue)
+                let strName = String(cString: pszInterfaceName)
                 
-                let cfKey: CFString = SCDynamicStoreKeyCreateNetworkInterfaceEntity(nil, kSCDynamicStoreDomainState, cfInterFace, kSCEntNetLink)
-                let cfLinkDic = SCDynamicStoreCopyValue(scStore, cfKey)
-                
-                if cfLinkDic == nil {
-                    continue
+                if nicName == strName {
+                    let cfServiceName = ((cfServiceDic as NSDictionary)["UserDefinedName"])
+                    let pszServiceName = UnsafeMutablePointer<CChar>.allocate(capacity: CFStringGetLength((cfServiceName as! CFString)) + 1)
+                    CFStringGetCString((cfServiceName as! CFString), pszServiceName, CFStringGetLength((cfServiceName as! CFString)) + 1, CFStringBuiltInEncodings.UTF8.rawValue)
+                    
+                    completion(cfServiceName as! String)
+                    break
                 }
-                let pszInterfaeName: UnsafeMutablePointer<CChar>?
-                CFStringGetCString(cfInterFace, pszInterfaeName, CFIndex(PATH_MAX), CFStringBuiltInEncodings.UTF8.rawValue)
-                let cfActive: CFBoolean = CFDictionaryGetValue(cfLinkDic as! CFDictionary, kSCPropNetLinkActive) as! CFBoolean
-                if cfActive == kCFBooleanTrue {
-                    vActiveNicName.append(String(pszInterfaeName))
-                }
+            } else {
+                continue
             }
-        } catch {
-            print("JDCNicUtil::GetActiveNicName Error =[%s]")
         }
         
         return true
     }
     
-//    func getServiceInfo(_ strNicName: String) -> NSDictionary? {
-//        if strNicName.isEmpty { return nil }
-//
-//
-//    }
+    func getAllNicInfoKeyValue() -> String {
+        guard let arrNicInfo: NSArray = getAllNicInfo() else { return "" }
+        var arr: [String] = []
+        
+        for info in arrNicInfo {
+            let nicInfo: NSString = NSString(format: "%@", info as! CVarArg)
+            
+            if !nicInfo.contains(NetworkNameSpace.LEFT_CURLY_BRAKET.rawValue) {
+                return info as! String
+            }
+            
+            let range = nicInfo.range(of: NetworkNameSpace.LEFT_CURLY_BRAKET.rawValue)
+            
+            let parseInfo = nicInfo.substring(with: NSMakeRange(range.location + 1, nicInfo.length - (range.location + 2)))
+            let listItems: NSArray = parseInfo.components(separatedBy: NetworkNameSpace.COMMA_SPACE.rawValue) as NSArray
+            
+            for item in listItems {
+                let newItem: NSString = item as! NSString
+                let keyValue: NSArray = newItem.components(separatedBy: "=") as NSArray
+                let value: NSString = (keyValue.object(at: 1) as AnyObject).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) as NSString
+                let key: NSString = (keyValue.object(at: 0) as AnyObject).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) as NSString
+                
+                arr.append("Key=[\(key)], Value=[\(value)]\n")
+            }
+        }
+        
+        return arr.joined()
+    }
+    
+    func getActiveNicName(_ completion: @escaping (String) -> ()) -> Bool {
+        guard let scStore: SCDynamicStore = SCDynamicStoreCreate(nil, NetworkNameSpace.NETWORK_INTERFACE_ACTIVE.rawValue as CFString, nil, nil) else {
+            return false
+        }
+        
+        let cfInterfaces: CFString = SCDynamicStoreKeyCreateNetworkInterface(nil, kSCDynamicStoreDomainState)
+        let cfPropList: CFDictionary = SCDynamicStoreCopyValue(scStore, cfInterfaces) as! CFDictionary
+        let cfNetInterfaces = (cfPropList as NSDictionary)["Interfaces"] as! CFArray
+        
+        for i in 1...CFArrayGetCount(cfNetInterfaces) {
+            let cfInterFace: CFString = unsafeBitCast(CFArrayGetValueAtIndex(cfNetInterfaces, i), to: CFString.self)
+            if CFStringFind(cfInterFace, NetworkNameSpace.LOOP_BACK_INTERFACE.rawValue as CFString, CFStringCompareFlags.compareAnchored).location != kCFNotFound {
+                continue
+            }
+            
+            let cfKey: CFString = SCDynamicStoreKeyCreateNetworkInterfaceEntity(nil, kSCDynamicStoreDomainState, cfInterFace, kSCEntNetLink)
+            let cfLinkDic = SCDynamicStoreCopyValue(scStore, cfKey)
+            
+            if cfLinkDic == nil {
+                continue
+            }
+            
+            let pszInterfaceName = UnsafeMutablePointer<CChar>.allocate(capacity: Int(PATH_MAX) + 1)
+            CFStringGetCString(cfInterFace, pszInterfaceName, CFIndex(PATH_MAX), CFStringBuiltInEncodings.UTF8.rawValue)
+            let cfActive: CFBoolean = (cfLinkDic as! NSDictionary)["Active"] as! CFBoolean
+            if cfActive == kCFBooleanTrue {
+                let str = String(cString: pszInterfaceName)
+                completion(str)
+            }
+        }
+        
+        return true
+    }
+    
+    //    func getServiceInfo(_ strNicName: String) -> NSDictionary? {
+    //        if strNicName.isEmpty { return nil }
+    //
+    //
+    //    }
 }

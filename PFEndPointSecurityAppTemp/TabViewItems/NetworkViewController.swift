@@ -31,15 +31,40 @@ class NetworkViewController: NSViewController {
         
     }
     
+    // killall sharedfilelistd
     @IBAction func getActiveNicName(_ sender: NSButton) {
+        if !activeNicNameListArr.isEmpty {
+            activeNicNameListArr.removeAll()
+            activeNicNameComboBox.removeAllItems()
+        }
         
+        if !networkUtilManager.getActiveNicName({ [self] interFaceName in
+            textViewLineCount = setTextViewText(self.textView, "ActiveNicName : \(interFaceName)", textViewLineCount)
+            activeNicNameListArr.append(interFaceName)
+            activeNicNameComboBox.addItem(withObjectValue: interFaceName)
+            activeNicNameComboBox.selectItem(at: 0)
+        }) {
+            textViewLineCount = setTextViewText(self.textView, "GetActiveNicName failed!", textViewLineCount)
+        }
     }
     
     @IBAction func getServiceName(_ sender: NSButton) {
+        guard let nicName = getSelectedName() else { return }
         
+        if !networkUtilManager.getServiceName(nicName, { [self] service in
+            if service.isEmpty {
+                textViewLineCount = setTextViewText(self.textView, "not serviced", textViewLineCount)
+            } else {
+                textViewLineCount = setTextViewText(self.textView, "Service Name : [\(service)]", textViewLineCount)
+            }
+        }) {
+            textViewLineCount = setTextViewText(self.textView, "GetServiceName failed!!!", textViewLineCount)
+        }
     }
     
     @IBAction func getServiceInfo(_ sender: NSButton) {
+        guard let nicName = getSelectedName() else { return }
+        
         
     }
     
@@ -48,7 +73,7 @@ class NetworkViewController: NSViewController {
     }
     
     @IBAction func getAllNicInfo(_ sender: NSButton) {
-        getAllNicInfo()
+        textViewLineCount = setTextViewText(self.textView, networkUtilManager.getAllNicInfoKeyValue(), textViewLineCount)
     }
     
     @IBAction func statusChangeCallBack(_ sender: NSButton) {
@@ -59,35 +84,20 @@ class NetworkViewController: NSViewController {
         
     }
     
-    private func getAllNicInfo() {
-        guard let arrNicInfo = networkUtilManager.getAllNicInfo() else { return }
-        
-        for info in arrNicInfo {
-            let nicInfo = NSString(format: info as! NSString, "%@")
-            
-            if !nicInfo.contains(LEFT_CURLY_BRAKET) {
-                textViewLineCount = setTextViewText(self.textView, info as! String, textViewLineCount)
-                return
-            }
-            
-            guard let range = NSRange(LEFT_CURLY_BRAKET) else { return }
-            let parseInfo = nicInfo.substring(with: NSMakeRange(range.location + 1, nicInfo.length - (range.location + 2)))
-            let listItems: NSArray = parseInfo.components(separatedBy: COMMA_SPACE) as NSArray
-            
-            for item in listItems {
-                let newItem: NSString = item as! NSString
-                let keyValue: NSArray = newItem.components(separatedBy: "=") as NSArray
-                let value: NSString = (keyValue.object(at: 1) as AnyObject).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) as NSString
-                let key: NSString = (keyValue.object(at: 0) as AnyObject).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) as NSString
-                
-                textViewLineCount = setTextViewText(self.textView, "Key=[\(key)], Value=[\(value)]", textViewLineCount)
-            }
-        }
-    }
-    
     private func getActiveNicName() {
         activeNicNameComboBox.removeAllItems()
+    }
+    
+    private func getSelectedName() -> String? {
+        let index = activeNicNameComboBox.indexOfSelectedItem
         
+        if index < 0 {
+            textViewLineCount = setTextViewText(self.textView, "nothing selected activeNicNameComboBox", textViewLineCount)
+            return nil
+        }
         
+        let nicName = activeNicNameListArr[index]
+        
+        return nicName
     }
 }
