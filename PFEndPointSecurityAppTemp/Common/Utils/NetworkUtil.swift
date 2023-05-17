@@ -7,6 +7,7 @@
 
 import Foundation
 import SystemConfiguration
+import Network
 
 enum NetworkNameSpace: String {
     case HARDWARE               = "Hardware"
@@ -38,6 +39,28 @@ class NetworkUtil: NSObject {
     static let shared = NetworkUtil()
     private override init() {}
     
+    func setPower(on: Bool, of nicName: String) -> Bool {
+        let nSockfd: Int = Int(socket(AF_INET, SOCK_DGRAM, 0))
+        let stIfr: ifreq?
+        let bytes = nicName.utf8CString
+        var arr: [UInt8] = []
+        
+        typealias TupleType = (CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar, CChar)
+        
+        bytes.forEach {
+            arr.append(UInt8($0))
+        }
+        
+        if nSockfd < 0 { return false }
+        
+        var tuple = UnsafeMutablePointer<TupleType>.allocate(capacity: 16)
+        memcpy(tuple, arr, Int(UInt(arr.count)))
+        
+        stIfr?.ifr_name = tuple
+        
+        print(bytes[0])
+    }
+    
     func getAllNicInfo() -> NSArray? {
         return CFBridgingRetain(SCNetworkInterfaceCopyAll()) as? NSArray
     }
@@ -45,7 +68,29 @@ class NetworkUtil: NSObject {
     func getServiceInfo(_ nicName: String) -> NSDictionary? {
         guard let scStore: SCDynamicStore = SCDynamicStoreCreate(nil, NetworkNameSpace.NETWORK_INTERFACE_ACTIVE.rawValue as CFString, nil, nil) else { return nil }
         
+        let cfGlobalInterfaces: CFArray?
+        let cfGlobalPropList: CFDictionary = SCDynamicStoreCopyValue(scStore, NetworkNameSpace.SETUP_NETWORK_GLOBAL_IPV4.rawValue as CFString) as! CFDictionary
+        cfGlobalInterfaces = ((cfGlobalPropList as NSDictionary)["ServiceOrder"] as! CFArray)
         
+        for index in 1...CFArrayGetCount(cfGlobalInterfaces) {
+            let cfGlobalInterface: CFString = unsafeBitCast(CFArrayGetValueAtIndex(cfGlobalInterfaces, index), to: CFString.self)
+            let cfKey: CFString = SCDynamicStoreKeyCreateNetworkServiceEntity(nil, kSCDynamicStoreDomainSetup, cfGlobalInterface, kSCEntNetInterface)
+            
+            let cfServiceDic: CFDictionary = (SCDynamicStoreCopyValue(scStore, cfKey) as! CFDictionary)
+            if let cfInterfaceName = ((cfServiceDic as NSDictionary)["DeviceName"]) {
+                let pszInterfaceName = UnsafeMutablePointer<CChar>.allocate(capacity: CFStringGetLength((cfInterfaceName as! CFString)) + 1)
+                CFStringGetCString((cfInterfaceName as! CFString), pszInterfaceName, CFStringGetLength((cfInterfaceName as! CFString)) + 1, CFStringBuiltInEncodings.UTF8.rawValue)
+                let strName = String(cString: pszInterfaceName)
+                
+                if nicName == strName {
+                    return cfServiceDic
+                }
+            } else {
+                continue
+            }
+        }
+        
+        return nil
     }
     
     func getServiceName(_ nicName: String, _ completion: @escaping (String) -> ()) -> Bool {
@@ -54,6 +99,7 @@ class NetworkUtil: NSObject {
         let cfGlobalInterfaces: CFArray?
         let cfGlobalPropList: CFDictionary = SCDynamicStoreCopyValue(scStore, NetworkNameSpace.SETUP_NETWORK_GLOBAL_IPV4.rawValue as CFString) as! CFDictionary
         cfGlobalInterfaces = ((cfGlobalPropList as NSDictionary)["ServiceOrder"] as! CFArray)
+        
         for index in 1...CFArrayGetCount(cfGlobalInterfaces) {
             let cfGlobalInterface: CFString = unsafeBitCast(CFArrayGetValueAtIndex(cfGlobalInterfaces, index), to: CFString.self)
             let cfKey: CFString = SCDynamicStoreKeyCreateNetworkServiceEntity(nil, kSCDynamicStoreDomainSetup, cfGlobalInterface, kSCEntNetInterface)

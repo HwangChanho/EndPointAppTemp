@@ -65,10 +65,24 @@ class NetworkViewController: NSViewController {
     @IBAction func getServiceInfo(_ sender: NSButton) {
         guard let nicName = getSelectedName() else { return }
         
+        guard let dicServiceInfo = networkUtilManager.getServiceInfo(nicName) else {
+            textViewLineCount = setTextViewText(self.textView, "not serviced", textViewLineCount)
+            return
+        }
         
+        for key in dicServiceInfo.allKeys {
+            let value = dicServiceInfo.value(forKey: key as! String)
+            textViewLineCount = setTextViewText(self.textView, "Key=[\(key)], Value=[\(String(describing: value))]", textViewLineCount)
+        }
     }
     
     @IBAction func powerOff(_ sender: NSButton) {
+        if getuid() != 0 && geteuid() != 0 {
+            textViewLineCount = setTextViewText(self.textView, "Permission denied", textViewLineCount)
+            return
+        }
+        
+        guard let nicName = getSelectedName() else { return }
         
     }
     
