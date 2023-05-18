@@ -8,9 +8,7 @@
 import Foundation
 import IOBluetooth
 
-
-
-// MARK: BlueToot
+// MARK: BlueTooth
 
 func getDeviceClassMajorDescriptionWithDeviceAddressInString(_ deviceAddress: String) -> String {
     guard let device = IOBluetoothDevice(addressString: deviceAddress) else { return "" }

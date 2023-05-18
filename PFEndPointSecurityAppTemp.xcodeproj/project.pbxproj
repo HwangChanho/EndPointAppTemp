@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284C29F75825002FACC3 /* BlueToothUtil.swift */; };
 		FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284F29F7584E002FACC3 /* CommonUtil.swift */; };
 		FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */; };
+		FB287F9E2A162144006FA846 /* ProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287F9D2A162144006FA846 /* ProtectionViewController.swift */; };
+		FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287F9F2A162164006FA846 /* ProtectionUtil.swift */; };
 		FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49129EFB1E600F126B5 /* AppDelegate.swift */; };
 		FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */; };
 		FB95D49629EFB1E600F126B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB95D49529EFB1E600F126B5 /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		FB06284C29F75825002FACC3 /* BlueToothUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothUtil.swift; sourceTree = "<group>"; };
 		FB06284F29F7584E002FACC3 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
 		FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothClassDescription.swift; sourceTree = "<group>"; };
+		FB287F9D2A162144006FA846 /* ProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionViewController.swift; sourceTree = "<group>"; };
+		FB287F9F2A162164006FA846 /* ProtectionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionUtil.swift; sourceTree = "<group>"; };
 		FB95D48E29EFB1E600F126B5 /* PFEndPointSecurityAppTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFEndPointSecurityAppTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB95D49129EFB1E600F126B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotificationViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				127F000E2A01374900AC5A61 /* OddUtil.swift */,
 				FBBB4BE02A11E3910007DDE3 /* IODetector.swift */,
 				FBBB4BE42A12015F0007DDE3 /* NetworkUtil.swift */,
+				FB287F9F2A162164006FA846 /* ProtectionUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -138,12 +143,20 @@
 		FB06285429F7BB98002FACC3 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
-				127F000129F8EAD100AC5A61 /* btUtil.cpp */,
+				FB5201AA2A159969003B9FFD /* BT */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		FB5201AA2A159969003B9FFD /* BT */ = {
+			isa = PBXGroup;
+			children = (
 				127F000229F8EAD100AC5A61 /* btUtil.hpp */,
 				127F000429F8EAE800AC5A61 /* btUtilWrapper.mm */,
 				127F000629F8EAF900AC5A61 /* btUtilWrapper.h */,
+				127F000129F8EAD100AC5A61 /* btUtil.cpp */,
 			);
-			path = Bridge;
+			path = BT;
 			sourceTree = "<group>";
 		};
 		FB95D48529EFB1E600F126B5 = {
@@ -207,6 +220,7 @@
 				127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */,
 				127F00102A01376A00AC5A61 /* OddViewController.swift */,
 				FBBB4BE22A11FCAE0007DDE3 /* NetworkViewController.swift */,
+				FB287F9D2A162144006FA846 /* ProtectionViewController.swift */,
 			);
 			path = TabViewItems;
 			sourceTree = "<group>";
@@ -301,7 +315,7 @@
 				};
 			};
 			buildConfigurationList = FB95D48929EFB1E600F126B5 /* Build configuration list for PBXProject "PFEndPointSecurityAppTemp" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -362,7 +376,9 @@
 				FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */,
 				FBBB4BE12A11E3910007DDE3 /* IODetector.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
+				FB287F9E2A162144006FA846 /* ProtectionViewController.swift in Sources */,
 				FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */,
+				FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */,
 				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
 				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,
 				FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */,
