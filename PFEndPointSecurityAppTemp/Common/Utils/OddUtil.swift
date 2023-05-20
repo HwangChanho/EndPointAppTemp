@@ -8,27 +8,6 @@
 import Foundation
 import IOKit
 
-enum PolicyKinds: Int {
-    case OddPolicy = 0                          // ODD 정책
-    case DenyProcessPath                        // 프로세스 경로로 프로세스 실행 차단
-    case DenyProcessSignedId                    // 프로세스 서명 ID로 프로세스 실행 차단
-    case CheckFileReadProcessPath               // 프로세스 경로의 해당 되는 프로세스의 파일 읽기를 체크한다
-    case CheckFileReadProcessSignedId           // 프로세스 서명 ID의 해당 되는 프로세스의 파일 읽기를 체크한다
-    case ExceptionPath                          // 예외 경로
-    case MuteProcessPath                        // 음소거 프로세스 경로
-    case ExternalStorageVolumePath              // 외부 저장소 경로
-    case DenyDirecotryWithUsers                 // 사용자 경로 하위의 차단 디렉토리
-    case DenyCreateFileInDirectory              // 지정된 경로 하위의 파일 생성 차단
-    case ProtectionPath                         // 경로 보호 ( 디렉토리 하위의 경로 모두 보호 )
-    case ProtectionFilePath                     // 파일 보호
-    case ProtectionProcessPath                  // 프로세스 경로로 프로세스 보호
-    case ProtectionProcessSignedId              // 프로세스 서명 ID 로 프로세스 보호
-    case ProtectionAcceptProcessPath            // 경로 보호, 파일 보호의 접근 할 수 있는 프로세스 경로
-    case ProtectionAcceptProcessSignedId        // 경로 보호, 파일 보호의 접근 할 수 있는 프로세스 서명 ID
-    case NotifyEventFlag                        // Notify 이벤트를 Auth 이벤트에서도 사용 할 경우의 대한 Flag
-    case MonitoringModifiedFilePath             // 파일의 변경 여부를 감시 한다.
-}
-
 let ODD_POLICY_NONE: Int                      = 0
 let ODD_POLICY_READ_ONLY: Int                 = 1
 let ODD_POLICY_PRIVATE_DATA_RECORD_CHECK: Int = 2

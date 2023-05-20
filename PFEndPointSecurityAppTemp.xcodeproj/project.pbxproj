@@ -13,6 +13,7 @@
 		127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F000E2A01374900AC5A61 /* OddUtil.swift */; };
 		127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F00102A01376A00AC5A61 /* OddViewController.swift */; };
 		127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */; };
+		12E9A48F2A190AA1000A7D41 /* PFDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A48E2A190AA1000A7D41 /* PFDefine.swift */; };
 		FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284C29F75825002FACC3 /* BlueToothUtil.swift */; };
 		FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284F29F7584E002FACC3 /* CommonUtil.swift */; };
 		FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */; };
@@ -65,6 +66,7 @@
 		127F000E2A01374900AC5A61 /* OddUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddUtil.swift; sourceTree = "<group>"; };
 		127F00102A01376A00AC5A61 /* OddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddViewController.swift; sourceTree = "<group>"; };
 		127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
+		12E9A48E2A190AA1000A7D41 /* PFDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFDefine.swift; sourceTree = "<group>"; };
 		FB06284C29F75825002FACC3 /* BlueToothUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothUtil.swift; sourceTree = "<group>"; };
 		FB06284F29F7584E002FACC3 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
 		FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothClassDescription.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				FB287FA62A16F8D4006FA846 /* Policy */,
 				FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */,
 				FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */,
+				12E9A48E2A190AA1000A7D41 /* PFDefine.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				FB287FA22A16F221006FA846 /* FileNotiUtil.swift in Sources */,
 				FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */,
 				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
+				12E9A48F2A190AA1000A7D41 /* PFDefine.swift in Sources */,
 				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,
 				FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */,
 				FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */,

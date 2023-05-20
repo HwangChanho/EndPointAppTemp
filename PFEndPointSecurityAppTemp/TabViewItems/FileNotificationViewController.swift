@@ -217,7 +217,6 @@ class FileNotificationXPCAppCommunication: NSObject, JDAppCommunication {
 }
 
 class FileNotificationViewController: NSViewController {
-    
     @IBOutlet weak var logSwitch: NSSwitch!
     @IBOutlet weak var addEventComboBox: NSComboBox!
     @IBOutlet weak var delEventComboBox: NSComboBox!
@@ -258,51 +257,285 @@ class FileNotificationViewController: NSViewController {
     }
     
     @IBAction func connectXPC(_ sender: NSButton) {
+        if notificationInstall != nil {
+            NSWorkspace.shared.notificationCenter.removeObserver(notificationInstall as Any)
+            notificationInstall = nil
+        }
         
+        XPCCommunicationManager.connectXPC()
     }
     
     @IBAction func unInstallExtension(_ sender: NSButton) {
-        
+        XPCCommunicationManager.installSystemExtension()
     }
     
     @IBAction func addAllNotifyEvent(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
+        let eventTypes = NSMutableArray()
         
+        var nNotifyEventFlag = 0
+        
+        let itemCount = addEventComboBox.numberOfItems
+        
+        for i in 0..<itemCount {
+            let notifyEventType: NSString = "ES_EVENT_TYPE_NOTIFY_\(addEventComboBox.itemObjectValue(at: i))" as NSString
+            
+            for key in ES_EVENT_TYPE_NOTIFY_DICT.allKeys {
+                if key as! Int == 0 { continue }
+                
+                let value = ES_EVENT_TYPE_NOTIFY_DICT.object(forKey: key)
+                if notifyEventType.compare(value as! String) == .orderedSame {
+                    eventTypes.add(key)
+                    nNotifyEventFlag = nNotifyEventFlag + (ES_EVENT_TYPE_NOTIFY_DICT.object(forKey: key) as! Int)
+                    break
+                }
+            }
+        }
+        
+        dictSendData.setObject(eventTypes, forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT as NSCopying)
+        dictSendData.setObject(NSNumber(integerLiteral: nNotifyEventFlag), forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT_FLAG as NSCopying)
+        
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Add Notify Event !!!"
+            return
+        }
+        
+        for i in 0..<itemCount {
+            delEventComboBox.addItem(withObjectValue: addEventComboBox.itemObjectValue(at: i))
+        }
+        
+        delEventComboBox.selectItem(at: 0)
+        addEventComboBox.removeAllItems()
+        addEventComboBox.stringValue = ""
     }
     
     @IBAction func addEvent(_ sender: NSButton) {
+        let index = addEventComboBox.indexOfSelectedItem
+        let selectedItem = addEventComboBox.itemObjectValue(at: index) as! Int
         
+        if selectedItem < 0 {
+            let log = "not selected disAllowLogComboBox"
+            return
+        }
+        
+        let dictSendData = NSMutableDictionary()
+        let eventTypes = NSMutableArray()
+        let notifyEventType: NSString = "ES_EVENT_TYPE_NOTIFY_\(addEventComboBox.itemObjectValue(at: index))" as NSString
+        
+        for key in ES_EVENT_TYPE_NOTIFY_DICT.allKeys {
+            if key as! Int == 0 { continue }
+            
+            let value = ES_EVENT_TYPE_NOTIFY_DICT.object(forKey: key)
+            if notifyEventType.compare(value as! String) == .orderedSame {
+                eventTypes.add(key)
+                dictSendData.setObject(ES_EVENT_TYPE_NOTIFY_DICT.object(forKey: key)!, forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT_FLAG as NSCopying)
+                break
+            }
+        }
+        dictSendData.setObject(eventTypes, forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT as NSCopying)
+        
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Send Client Data !!!"
+            return
+        }
+        
+        delEventComboBox.addItem(withObjectValue: selectedItem)
+        delEventComboBox.selectItem(at: 0)
+        
+        if addEventComboBox.numberOfItems == 1 {
+            addEventComboBox.stringValue = ""
+        }
+        
+        addEventComboBox.removeItem(at: index)
+        addEventComboBox.selectItem(at: 0)
     }
     
     @IBAction func delEvent(_ sender: NSButton) {
+        let index = addEventComboBox.indexOfSelectedItem
+        let selectedItem = addEventComboBox.itemObjectValue(at: index) as! Int
         
+        if selectedItem < 0 {
+            let log = "not selected disAllowLogComboBox"
+            return
+        }
+        
+        let dictSendData = NSMutableDictionary()
+        let notifyEventTypes = NSMutableArray()
+        let notifyEventType: NSString = "ES_EVENT_TYPE_NOTIFY_\(delEventComboBox.itemObjectValue(at: index))" as NSString
+        
+        for key in ES_EVENT_TYPE_NOTIFY_DICT.allKeys {
+            if key as! Int == 0 { continue }
+            
+            let value = ES_EVENT_TYPE_NOTIFY_DICT.object(forKey: key)
+            if notifyEventType.compare(value as! String) == .orderedSame {
+                notifyEventTypes.addObjects(from: key as! [Any])
+                dictSendData.setObject(ES_EVENT_TYPE_NOTIFY_DICT.object(forKey: key)!, forKey: NotiNameSpace.KEY_SUB_NOTIFY_EVENT_FLAG as NSCopying)
+                break
+            }
+        }
+        
+        dictSendData.setObject(notifyEventTypes, forKey: NotiNameSpace.KEY_DEL_NOTIFY_EVENT as NSCopying)
+        
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Send Client Data !!!"
+            return
+        }
+        
+        addEventComboBox.addItem(withObjectValue: selectedItem)
+        addEventComboBox.selectItem(at: 0)
+        
+        if delEventComboBox.numberOfItems == 1 {
+            delEventComboBox.stringValue = ""
+        }
+        
+        delEventComboBox.removeItem(at: index)
+        delEventComboBox.selectItem(at: 0)
     }
     
     @IBAction func startAuthEvent(_ sender: NSButton) {
+        if notificationXPCConnect != nil {
+            NSWorkspace.shared.notificationCenter.removeObserver(notificationXPCConnect as Any)
+            notificationXPCConnect = nil
+        }
         
+        let dictSendData = NSMutableDictionary()
+        let eventSwitch = NSNumber.init(booleanLiteral: true)
+        
+        dictSendData.setObject(eventSwitch, forKey: AuthNameSpace.KEY_START_AUTH_EVENT as NSCopying)
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Start Auth Event !!!"
+            return
+        }
+        dictSendData.removeAllObjects()
+        
+        let notifyEventTypes = NSMutableArray()
+        notifyEventTypes.add(NSNumber(integerLiteral: EsEvent.ES_EVENT_TYPE_NOTIFY_OPEN.rawValue))
+        notifyEventTypes.add(NSNumber(integerLiteral: EsEvent.ES_EVENT_TYPE_NOTIFY_CLOSE.rawValue))
+        notifyEventTypes.add(NSNumber(integerLiteral: EsEvent.ES_EVENT_TYPE_NOTIFY_CREATE.rawValue))
+        dictSendData.setObject(notifyEventTypes, forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT as NSCopying)
+        
+        let nNotifyEventFlag = NotifyEventFlag.OpenWithOther.rawValue + NotifyEventFlag.CreateWithOther.rawValue + NotifyEventFlag.CloseWithOther.rawValue
+        dictSendData.setObject(NSNumber(integerLiteral: nNotifyEventFlag), forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT_FLAG as NSCopying)
+        
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Add Notify Event !!!"
+            return
+        }
+        
+        let log = "Start Auth Event"
     }
     
     @IBAction func stopAuthEvent(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
+        let eventSwitch = NSNumber.init(booleanLiteral: true)
         
+        dictSendData.setObject(eventSwitch, forKey: AuthNameSpace.KEY_START_AUTH_EVENT as NSCopying)
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Start Auth Event !!!"
+            return
+        }
+        dictSendData.removeAllObjects()
+        
+        let notifyEventTypes = NSMutableArray()
+        notifyEventTypes.add(NSNumber(integerLiteral: EsEvent.ES_EVENT_TYPE_NOTIFY_OPEN.rawValue))
+        notifyEventTypes.add(NSNumber(integerLiteral: EsEvent.ES_EVENT_TYPE_NOTIFY_CLOSE.rawValue))
+        notifyEventTypes.add(NSNumber(integerLiteral: EsEvent.ES_EVENT_TYPE_NOTIFY_CREATE.rawValue))
+        dictSendData.setObject(notifyEventTypes, forKey: NotiNameSpace.KEY_DEL_NOTIFY_EVENT as NSCopying)
+        
+        let nNotifyEventFlag = NotifyEventFlag.OpenWithOther.rawValue + NotifyEventFlag.CreateWithOther.rawValue + NotifyEventFlag.CloseWithOther.rawValue
+        dictSendData.setObject(NSNumber(integerLiteral: nNotifyEventFlag), forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT_FLAG as NSCopying)
+        
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Add Notify Event !!!"
+            return
+        }
+        
+        let log = "Start Auth Event"
     }
     
     @IBAction func printOpenFileItem(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
+        let reserved = NSNumber(booleanLiteral: true)
         
+        dictSendData.setObject(reserved, forKey: AuthNameSpace.KEY_PRINT_OPEN_FILE_ITEM as NSCopying)
+        if XPCCommunicationManager.sendClientData(dictSendData) == false {
+            let log = "Failed Print Open File Item !!!"
+            return
+        }
+        
+        let log = "Print Open File Item"
     }
     
     @IBAction func addExceptionPath(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
         
+        for i in 0..<EXCEPTION_PATH_LIST.count / EXCEPTION_PATH_LIST[0].count {
+            let exceptionPath: NSString = "\(EXCEPTION_PATH_LIST[i])" as NSString
+            
+            dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.ExceptionPath.rawValue), forKey: EndPointNameSpace.KEY_ADD_POLICY as NSCopying)
+            dictSendData.setObject(exceptionPath, forKey: EndPointNameSpace.KEY_POLICY_ITEM as NSCopying)
+            
+            if XPCCommunicationManager.sendClientData(dictSendData) {
+                let log = "Failed Add Exception Path !!!"
+                return
+            }
+        }
+        
+        let log = "Add Exception Path"
     }
     
     @IBAction func delExceptionPath(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
         
+        for i in 0..<EXCEPTION_PATH_LIST.count / EXCEPTION_PATH_LIST[0].count {
+            let exceptionPath: NSString = "\(EXCEPTION_PATH_LIST[i])" as NSString
+            
+            dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.ExceptionPath.rawValue), forKey: EndPointNameSpace.KEY_DEL_POLICY as NSCopying)
+            dictSendData.setObject(exceptionPath, forKey: EndPointNameSpace.KEY_POLICY_ITEM as NSCopying)
+            
+            if XPCCommunicationManager.sendClientData(dictSendData) {
+                let log = "Failed Del Exception Path !!!"
+                return
+            }
+        }
+        
+        let log = "Del Exception Path"
     }
     
     @IBAction func addMuteProcPath(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
         
+        for i in 0..<EXCEPTION_PATH_LIST.count / EXCEPTION_PATH_LIST[0].count {
+            let exceptionPath: NSString = "\(EXCEPTION_PATH_LIST[i])" as NSString
+            
+            dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.MuteProcessPath.rawValue), forKey: EndPointNameSpace.KEY_ADD_POLICY as NSCopying)
+            dictSendData.setObject(exceptionPath, forKey: EndPointNameSpace.KEY_POLICY_ITEM as NSCopying)
+            
+            if XPCCommunicationManager.sendClientData(dictSendData) {
+                let log = "Failed Add Mute Proc Path !!!"
+                return
+            }
+        }
+        
+        let log = "Add Mute Proc Path"
     }
     
     @IBAction func delMuteProcPath(_ sender: NSButton) {
+        let dictSendData = NSMutableDictionary()
         
+        for i in 0..<EXCEPTION_PATH_LIST.count / EXCEPTION_PATH_LIST[0].count {
+            let exceptionPath: NSString = "\(EXCEPTION_PATH_LIST[i])" as NSString
+            
+            dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.MuteProcessPath.rawValue), forKey: EndPointNameSpace.KEY_DEL_POLICY as NSCopying)
+            dictSendData.setObject(exceptionPath, forKey: EndPointNameSpace.KEY_POLICY_ITEM as NSCopying)
+            
+            if XPCCommunicationManager.sendClientData(dictSendData) {
+                let log = "Failed Del Mute Proc Path !!!"
+                return
+            }
+        }
+        
+        let log = "Del Mute Proc Path"
     }
     
     private func initEventComboBox() {
