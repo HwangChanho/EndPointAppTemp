@@ -9,7 +9,7 @@ import Foundation
 import IOKit
 
 enum PolicyKinds: Int {
-    case OddPolicy                              // ODD 정책
+    case OddPolicy = 0                          // ODD 정책
     case DenyProcessPath                        // 프로세스 경로로 프로세스 실행 차단
     case DenyProcessSignedId                    // 프로세스 서명 ID로 프로세스 실행 차단
     case CheckFileReadProcessPath               // 프로세스 경로의 해당 되는 프로세스의 파일 읽기를 체크한다

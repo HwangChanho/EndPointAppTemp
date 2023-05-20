@@ -18,6 +18,11 @@
 		FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */; };
 		FB287F9E2A162144006FA846 /* ProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287F9D2A162144006FA846 /* ProtectionViewController.swift */; };
 		FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287F9F2A162164006FA846 /* ProtectionUtil.swift */; };
+		FB287FA22A16F221006FA846 /* FileNotiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FA12A16F221006FA846 /* FileNotiUtil.swift */; };
+		FB287FA52A16F73F006FA846 /* NotifyHandleEventDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */; };
+		FB287FA82A16F8E6006FA846 /* EndPointSecurityDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FA72A16F8E6006FA846 /* EndPointSecurityDefine.swift */; };
+		FB287FAB2A16FEDD006FA846 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAA2A16FEDD006FA846 /* Util.swift */; };
+		FB287FAD2A170B46006FA846 /* AuthHandleDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */; };
 		FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49129EFB1E600F126B5 /* AppDelegate.swift */; };
 		FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */; };
 		FB95D49629EFB1E600F126B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB95D49529EFB1E600F126B5 /* Assets.xcassets */; };
@@ -65,6 +70,11 @@
 		FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothClassDescription.swift; sourceTree = "<group>"; };
 		FB287F9D2A162144006FA846 /* ProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionViewController.swift; sourceTree = "<group>"; };
 		FB287F9F2A162164006FA846 /* ProtectionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionUtil.swift; sourceTree = "<group>"; };
+		FB287FA12A16F221006FA846 /* FileNotiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotiUtil.swift; sourceTree = "<group>"; };
+		FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyHandleEventDefine.swift; sourceTree = "<group>"; };
+		FB287FA72A16F8E6006FA846 /* EndPointSecurityDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointSecurityDefine.swift; sourceTree = "<group>"; };
+		FB287FAA2A16FEDD006FA846 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandleDefine.swift; sourceTree = "<group>"; };
 		FB95D48E29EFB1E600F126B5 /* PFEndPointSecurityAppTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFEndPointSecurityAppTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB95D49129EFB1E600F126B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotificationViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 		127F000B29FB63B100AC5A61 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				FBBB4BE02A11E3910007DDE3 /* IODetector.swift */,
 				127F000C29FB63D200AC5A61 /* XPCManager.swift */,
 			);
 			path = Manager;
@@ -124,9 +135,9 @@
 				FB95D4C429F121A600F126B5 /* DiskUtil.swift */,
 				FB06284F29F7584E002FACC3 /* CommonUtil.swift */,
 				127F000E2A01374900AC5A61 /* OddUtil.swift */,
-				FBBB4BE02A11E3910007DDE3 /* IODetector.swift */,
 				FBBB4BE42A12015F0007DDE3 /* NetworkUtil.swift */,
 				FB287F9F2A162164006FA846 /* ProtectionUtil.swift */,
+				FB287FA12A16F221006FA846 /* FileNotiUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -146,6 +157,32 @@
 				FB5201AA2A159969003B9FFD /* BT */,
 			);
 			path = Bridge;
+			sourceTree = "<group>";
+		};
+		FB287FA32A16F728006FA846 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				FB287FA62A16F8D4006FA846 /* Policy */,
+				FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */,
+				FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */,
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
+		FB287FA62A16F8D4006FA846 /* Policy */ = {
+			isa = PBXGroup;
+			children = (
+				FB287FA72A16F8E6006FA846 /* EndPointSecurityDefine.swift */,
+			);
+			path = Policy;
+			sourceTree = "<group>";
+		};
+		FB287FA92A16FED2006FA846 /* Methods */ = {
+			isa = PBXGroup;
+			children = (
+				FB287FAA2A16FEDD006FA846 /* Util.swift */,
+			);
+			path = Methods;
 			sourceTree = "<group>";
 		};
 		FB5201AA2A159969003B9FFD /* BT */ = {
@@ -228,6 +265,8 @@
 		FB95D4BF29F0BD1C00F126B5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FB287FA92A16FED2006FA846 /* Methods */,
+				FB287FA32A16F728006FA846 /* Define */,
 				FB06284B29F7580C002FACC3 /* Utils */,
 				FB95D4C229F0DD3E00F126B5 /* Constant.swift */,
 			);
@@ -367,17 +406,22 @@
 			files = (
 				FB95D4BE29EFCF3F00F126B5 /* BluetoothViewController.swift in Sources */,
 				127F000D29FB63D200AC5A61 /* XPCManager.swift in Sources */,
+				FB287FAD2A170B46006FA846 /* AuthHandleDefine.swift in Sources */,
 				FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */,
 				FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */,
+				FB287FA52A16F73F006FA846 /* NotifyHandleEventDefine.swift in Sources */,
 				127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */,
 				127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */,
 				127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */,
 				FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */,
 				FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */,
+				FB287FA82A16F8E6006FA846 /* EndPointSecurityDefine.swift in Sources */,
 				FBBB4BE12A11E3910007DDE3 /* IODetector.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
 				FB287F9E2A162144006FA846 /* ProtectionViewController.swift in Sources */,
+				FB287FAB2A16FEDD006FA846 /* Util.swift in Sources */,
 				FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */,
+				FB287FA22A16F221006FA846 /* FileNotiUtil.swift in Sources */,
 				FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */,
 				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
 				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,

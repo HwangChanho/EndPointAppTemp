@@ -704,7 +704,7 @@
         <!--Tab View Controller-->
         <scene sceneID="Lyg-bs-abw">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="V79-Ye-f1r" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="V79-Ye-f1r" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="FileNotification" identifier="" id="s9x-LB-XHX"/>
                         <tabViewItem label="Bluetooth" identifier="" id="Fdl-q5-A6F" customClass="Bluet"/>
@@ -743,20 +743,20 @@
         <scene sceneID="LUR-qK-ddd">
             <objects>
                 <viewController id="0VI-oB-qOL" customClass="FileNotificationViewController" customModule="PFEndPointSecurityAppTemp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="81I-S3-W8d">
+                    <view key="view" id="ovG-Iv-Uzc">
                         <rect key="frame" x="0.0" y="0.0" width="1042" height="710"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omc-UB-fRv">
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="188-pK-WH8">
                                 <rect key="frame" x="200" y="0.0" width="842" height="705"/>
-                                <clipView key="contentView" drawsBackground="NO" id="8tu-iB-aY1">
+                                <clipView key="contentView" drawsBackground="NO" id="gLI-fM-FMw">
                                     <rect key="frame" x="0.0" y="0.0" width="827" height="705"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView wantsLayer="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="nZ8-nr-oXT">
+                                        <textView wantsLayer="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ARY-kL-Xq5">
                                             <rect key="frame" x="0.0" y="0.0" width="827" height="705"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="0.098039215690000001" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="827" height="705"/>
                                             <size key="maxSize" width="921" height="10000000"/>
@@ -764,23 +764,237 @@
                                         </textView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ua2-Mw-8vI">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="gkU-7Z-JAY">
                                     <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="aAP-17-dCD">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="X2P-9U-Ucx">
                                     <rect key="frame" x="827" y="0.0" width="15" height="705"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y8T-Yp-ydc">
+                                <rect key="frame" x="3" y="673" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Install Extension" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2Nf-gz-FDZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="installExtension:" target="0VI-oB-qOL" id="9lb-OI-SjP"/>
+                                </connections>
+                            </button>
+                            <comboBox verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdU-xX-bZk">
+                                <rect key="frame" x="9" y="528" width="184" height="23"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" completes="NO" numberOfVisibleItems="5" id="Aux-lR-tVV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                            </comboBox>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="08u-S2-NP5">
+                                <rect key="frame" x="3" y="643" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Connect XPC" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7S-jd-RGs">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="connectXPC:" target="0VI-oB-qOL" id="UXw-RS-BhA"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KUv-s6-zJf">
+                                <rect key="frame" x="3" y="613" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="UnInstall Extension" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="512-9I-TT0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="unInstallExtension:" target="0VI-oB-qOL" id="NmU-ig-qRe"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Evl-Me-c31">
+                                <rect key="frame" x="3" y="553" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="AddAllNotifyEvent" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6il-oU-DCG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addAllNotifyEvent:" target="0VI-oB-qOL" id="oUm-0v-sRV"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P8h-Zm-0Km">
+                                <rect key="frame" x="3" y="493" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add Event" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VgZ-CI-bHw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addEvent:" target="0VI-oB-qOL" id="rCu-q6-wEk"/>
+                                </connections>
+                            </button>
+                            <comboBox verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wb2-8J-wWU">
+                                <rect key="frame" x="9" y="468" width="184" height="23"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" completes="NO" numberOfVisibleItems="5" id="tJU-04-SKY">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                            </comboBox>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-nB-VWm">
+                                <rect key="frame" x="3" y="433" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Del Event" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qgd-a3-B5v">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="delEvent:" target="0VI-oB-qOL" id="tmI-qW-bC2"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUn-Qj-BPf">
+                                <rect key="frame" x="3" y="373" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Start Auth Event" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lXu-fv-7Aa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startAuthEvent:" target="0VI-oB-qOL" id="4hM-m5-lty"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eKG-n2-uPG">
+                                <rect key="frame" x="3" y="313" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Print Open File Item" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="66O-Va-Eh4">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="printOpenFileItem:" target="0VI-oB-qOL" id="7zj-kU-Twv"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZbM-gn-PNr">
+                                <rect key="frame" x="3" y="253" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add Exception Path" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SuD-TE-WIF">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addExceptionPath:" target="0VI-oB-qOL" id="skA-ne-ext"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KR8-vM-evk">
+                                <rect key="frame" x="3" y="223" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Del Exception Path" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VSV-ot-TdH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="delExceptionPath:" target="0VI-oB-qOL" id="Ooz-6Q-ZYH"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="loK-eq-wEG">
+                                <rect key="frame" x="3" y="183" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add Mute Proc Path" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VrR-8U-I4s">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addMuteProcPath:" target="0VI-oB-qOL" id="anV-Il-vNm"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i2c-L8-4G2">
+                                <rect key="frame" x="3" y="153" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Del Mute Proc Path" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AiW-VQ-UKW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="delMuteProcPath:" target="0VI-oB-qOL" id="y50-0G-A50"/>
+                                </connections>
+                            </button>
+                            <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="fQM-V2-LeG">
+                                <rect key="frame" x="8" y="86" width="42" height="25"/>
+                            </switch>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PQ0-AO-USU">
+                                <rect key="frame" x="56" y="91" width="27" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Log" id="LEk-5R-Gkj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdj-wc-Cp8">
+                                <rect key="frame" x="3" y="343" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Stop Auth Event" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ARb-Zr-kcI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopAuthEvent:" target="0VI-oB-qOL" id="aUS-Ti-Eq3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="omc-UB-fRv" firstAttribute="leading" secondItem="81I-S3-W8d" secondAttribute="leading" constant="200" id="Pkt-is-dVa"/>
-                            <constraint firstAttribute="bottom" secondItem="omc-UB-fRv" secondAttribute="bottom" id="Pu7-lA-w04"/>
-                            <constraint firstAttribute="trailing" secondItem="omc-UB-fRv" secondAttribute="trailing" id="Vy6-jA-3ZN"/>
-                            <constraint firstItem="omc-UB-fRv" firstAttribute="top" secondItem="81I-S3-W8d" secondAttribute="top" constant="5" id="rD5-9u-KIr"/>
+                            <constraint firstItem="i2c-L8-4G2" firstAttribute="top" secondItem="loK-eq-wEG" secondAttribute="bottom" constant="10" id="1Cl-dc-Jhj"/>
+                            <constraint firstItem="fQM-V2-LeG" firstAttribute="top" secondItem="i2c-L8-4G2" secondAttribute="bottom" constant="50" id="1Tz-lT-vMU"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="y8T-Yp-ydc" secondAttribute="trailing" constant="10" id="3Ul-xe-fYf"/>
+                            <constraint firstItem="fQM-V2-LeG" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="4me-zd-vk4"/>
+                            <constraint firstItem="kdj-wc-Cp8" firstAttribute="top" secondItem="sUn-Qj-BPf" secondAttribute="bottom" constant="10" id="77V-By-ZYH"/>
+                            <constraint firstItem="eKG-n2-uPG" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="7Pi-up-IIE"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="ZbM-gn-PNr" secondAttribute="trailing" constant="10" id="9RN-nP-MPw"/>
+                            <constraint firstItem="PQ0-AO-USU" firstAttribute="centerY" secondItem="fQM-V2-LeG" secondAttribute="centerY" id="Aiu-zc-042"/>
+                            <constraint firstItem="loK-eq-wEG" firstAttribute="top" secondItem="KR8-vM-evk" secondAttribute="bottom" constant="20" id="Cnq-bH-bcg"/>
+                            <constraint firstItem="y8T-Yp-ydc" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="D7Z-cI-1Ru"/>
+                            <constraint firstItem="pdU-xX-bZk" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="DJx-7y-bpm"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="200" id="E9A-mZ-Qmw"/>
+                            <constraint firstItem="08u-S2-NP5" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="EFB-OI-jTb"/>
+                            <constraint firstItem="KR8-vM-evk" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="H1F-g9-SOc"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="eKG-n2-uPG" secondAttribute="trailing" constant="10" id="HCz-Gu-T69"/>
+                            <constraint firstItem="i2c-L8-4G2" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="HgN-nz-yk4"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="KR8-vM-evk" secondAttribute="trailing" constant="10" id="J73-aP-PMV"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="sUn-Qj-BPf" secondAttribute="trailing" constant="10" id="JXd-dr-TGV"/>
+                            <constraint firstItem="KUv-s6-zJf" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="LmC-Xm-d7H"/>
+                            <constraint firstItem="y8T-Yp-ydc" firstAttribute="top" secondItem="ovG-Iv-Uzc" secondAttribute="top" constant="10" id="Mie-by-EAL"/>
+                            <constraint firstItem="ZbM-gn-PNr" firstAttribute="top" secondItem="eKG-n2-uPG" secondAttribute="bottom" constant="40" id="Nrd-y1-qkg"/>
+                            <constraint firstItem="loK-eq-wEG" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="OSw-fp-0od"/>
+                            <constraint firstItem="sUn-Qj-BPf" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="QvS-v2-u5c"/>
+                            <constraint firstItem="KR8-vM-evk" firstAttribute="top" secondItem="ZbM-gn-PNr" secondAttribute="bottom" constant="10" id="RFI-NJ-PIz"/>
+                            <constraint firstItem="ZbM-gn-PNr" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="SWK-I4-2R4"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="pdU-xX-bZk" secondAttribute="trailing" constant="10" id="Tmz-xq-qha"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="P8h-Zm-0Km" secondAttribute="trailing" constant="10" id="Uy5-vY-Gz6"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="KUv-s6-zJf" secondAttribute="trailing" constant="10" id="VeA-hI-CjW"/>
+                            <constraint firstItem="c6g-nB-VWm" firstAttribute="top" secondItem="wb2-8J-wWU" secondAttribute="bottom" constant="10" id="Vr4-so-VJA"/>
+                            <constraint firstItem="kdj-wc-Cp8" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="Z5a-H3-IDp"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="Evl-Me-c31" secondAttribute="trailing" constant="10" id="aBh-Iu-am1"/>
+                            <constraint firstItem="pdU-xX-bZk" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="aJS-aL-5qH"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="wb2-8J-wWU" secondAttribute="trailing" constant="10" id="aO9-m4-zgJ"/>
+                            <constraint firstItem="pdU-xX-bZk" firstAttribute="top" secondItem="Evl-Me-c31" secondAttribute="bottom" constant="10" id="bRV-YN-wGT"/>
+                            <constraint firstItem="KUv-s6-zJf" firstAttribute="top" secondItem="08u-S2-NP5" secondAttribute="bottom" constant="10" id="bmP-zA-fS5"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="i2c-L8-4G2" secondAttribute="trailing" constant="10" id="cdH-RT-xpu"/>
+                            <constraint firstAttribute="bottom" secondItem="188-pK-WH8" secondAttribute="bottom" id="e5U-SG-bN3"/>
+                            <constraint firstItem="Evl-Me-c31" firstAttribute="top" secondItem="KUv-s6-zJf" secondAttribute="bottom" constant="40" id="eBs-2h-cxY"/>
+                            <constraint firstItem="sUn-Qj-BPf" firstAttribute="top" secondItem="c6g-nB-VWm" secondAttribute="bottom" constant="40" id="eWc-r2-qoC"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="c6g-nB-VWm" secondAttribute="trailing" constant="10" id="f6I-Le-jIr"/>
+                            <constraint firstItem="Evl-Me-c31" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="hBR-qh-jr1"/>
+                            <constraint firstItem="PQ0-AO-USU" firstAttribute="leading" secondItem="fQM-V2-LeG" secondAttribute="trailing" constant="10" id="i1l-M4-AQR"/>
+                            <constraint firstItem="P8h-Zm-0Km" firstAttribute="top" secondItem="pdU-xX-bZk" secondAttribute="bottom" constant="10" id="jvu-4n-nHA"/>
+                            <constraint firstItem="P8h-Zm-0Km" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="mIa-ce-C4B"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="loK-eq-wEG" secondAttribute="trailing" constant="10" id="mMy-Y3-CNZ"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="kdj-wc-Cp8" secondAttribute="trailing" constant="10" id="o40-28-CQC"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="top" secondItem="ovG-Iv-Uzc" secondAttribute="top" constant="5" id="oxA-nu-MaA"/>
+                            <constraint firstItem="c6g-nB-VWm" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="s9b-4a-hfL"/>
+                            <constraint firstItem="wb2-8J-wWU" firstAttribute="leading" secondItem="ovG-Iv-Uzc" secondAttribute="leading" constant="10" id="uE1-5D-f2H"/>
+                            <constraint firstItem="08u-S2-NP5" firstAttribute="top" secondItem="y8T-Yp-ydc" secondAttribute="bottom" constant="10" id="uIZ-bT-b7F"/>
+                            <constraint firstItem="wb2-8J-wWU" firstAttribute="top" secondItem="P8h-Zm-0Km" secondAttribute="bottom" constant="10" id="vcp-4F-Utp"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="pdU-xX-bZk" secondAttribute="trailing" constant="10" id="xh2-ui-3YQ"/>
+                            <constraint firstItem="188-pK-WH8" firstAttribute="leading" secondItem="08u-S2-NP5" secondAttribute="trailing" constant="10" id="xxQ-TQ-TW9"/>
+                            <constraint firstAttribute="trailing" secondItem="188-pK-WH8" secondAttribute="trailing" id="xxQ-iq-wBg"/>
+                            <constraint firstItem="eKG-n2-uPG" firstAttribute="top" secondItem="kdj-wc-Cp8" secondAttribute="bottom" constant="10" id="zHq-U1-kpk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addEventComboBox" destination="pdU-xX-bZk" id="Hgh-Jx-yQ4"/>
+                        <outlet property="delEventComboBox" destination="wb2-8J-wWU" id="uz4-dJ-7aC"/>
+                        <outlet property="logSwitch" destination="fQM-V2-LeG" id="XG3-Mf-fpx"/>
+                        <outlet property="textVIew" destination="ARY-kL-Xq5" id="qYC-5u-hI8"/>
+                    </connections>
                 </viewController>
                 <customObject id="HHJ-zU-QVp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1031,11 +1245,11 @@
                                         </textView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6hM-4B-3rA">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="6hM-4B-3rA">
                                     <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="kqx-8E-0VU">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="kqx-8E-0VU">
                                     <rect key="frame" x="827" y="0.0" width="15" height="705"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1224,11 +1438,11 @@
                                         </textView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cJW-M9-wdL">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cJW-M9-wdL">
                                     <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="g8I-EP-GoG">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="g8I-EP-GoG">
                                     <rect key="frame" x="827" y="0.0" width="15" height="705"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1611,11 +1825,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="850" id="Emx-1u-0lG"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="C40-Ik-cmi">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="C40-Ik-cmi">
                                     <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="ze3-6J-3BJ">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ze3-6J-3BJ">
                                     <rect key="frame" x="835" y="0.0" width="15" height="705"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1723,6 +1937,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addAcceptProcPath:" target="5a1-uc-sxL" id="UA3-wW-z3Z"/>
+                                </connections>
                             </button>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4d-2Q-cYj">
                                 <rect key="frame" x="192" y="0.0" width="850" height="710"/>
@@ -1744,11 +1961,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="850" id="tbj-Js-IqD"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uvX-TI-WGz">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="uvX-TI-WGz">
                                     <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="f5V-96-dTv">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="f5V-96-dTv">
                                     <rect key="frame" x="835" y="0.0" width="15" height="710"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1778,6 +1995,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="clearProtectionPath:" target="5a1-uc-sxL" id="QUB-fv-aBO"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DEs-MD-iVK">
                                         <rect key="frame" x="-5" y="73" width="182" height="32"/>
@@ -1785,6 +2005,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="clearProtectionFilePath:" target="5a1-uc-sxL" id="1qp-jf-ilo"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jud-aZ-OaQ">
                                         <rect key="frame" x="-5" y="33" width="182" height="32"/>
@@ -1792,6 +2015,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="clearProtectionProcPath:" target="5a1-uc-sxL" id="VrC-9E-raH"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-uF-vud">
                                         <rect key="frame" x="-5" y="3" width="182" height="32"/>
@@ -1799,6 +2025,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="clearProtectionProcSignedld:" target="5a1-uc-sxL" id="kFH-hS-v9q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1823,6 +2052,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="fileTruncate:" target="5a1-uc-sxL" id="wlw-Wq-Rz2"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GC6-ei-H1R">
                                 <rect key="frame" x="3" y="189" width="186" height="32"/>
@@ -1830,6 +2062,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="setAttrList:" target="5a1-uc-sxL" id="Z8U-TP-Vzn"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u5F-NR-egF">
                                 <rect key="frame" x="3" y="643" width="186" height="32"/>
@@ -1837,6 +2072,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addAcceptProcSignedld:" target="5a1-uc-sxL" id="IdW-NC-WOD"/>
+                                </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="G1R-l7-3JT">
                                 <rect key="frame" x="10" y="443" width="172" height="140"/>
@@ -1847,6 +2085,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addProtectionPath:" target="5a1-uc-sxL" id="dxx-F7-y5E"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uM1-9Q-wnJ">
                                         <rect key="frame" x="-5" y="73" width="182" height="32"/>
@@ -1854,6 +2095,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addProtectionFilePath:" target="5a1-uc-sxL" id="Z55-PO-SV6"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yBg-Hc-dRi">
                                         <rect key="frame" x="-5" y="33" width="182" height="32"/>
@@ -1861,6 +2105,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addProtectionProcPath:" target="5a1-uc-sxL" id="umC-fp-lAv"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FZw-hz-gPm">
                                         <rect key="frame" x="-5" y="3" width="182" height="32"/>
@@ -1868,6 +2115,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addProtectionProcSignedld:" target="5a1-uc-sxL" id="xJM-ZI-S98"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
