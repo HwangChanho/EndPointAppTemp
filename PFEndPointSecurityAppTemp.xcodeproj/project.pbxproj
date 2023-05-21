@@ -14,6 +14,15 @@
 		127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F00102A01376A00AC5A61 /* OddViewController.swift */; };
 		127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */; };
 		12E9A48F2A190AA1000A7D41 /* PFDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A48E2A190AA1000A7D41 /* PFDefine.swift */; };
+		12E9A4912A1A4362000A7D41 /* BlockExecutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A4902A1A4362000A7D41 /* BlockExecutionViewController.swift */; };
+		12E9A4932A1A51DB000A7D41 /* WebBrowserDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A4922A1A51DB000A7D41 /* WebBrowserDefine.swift */; };
+		12E9A4952A1A53A6000A7D41 /* PathUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A4942A1A53A6000A7D41 /* PathUtil.swift */; };
+		12E9A4972A1A5B52000A7D41 /* ProcessUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A4962A1A5B52000A7D41 /* ProcessUtil.swift */; };
+		12E9A4992A1A6FFF000A7D41 /* MessengerDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A4982A1A6FFF000A7D41 /* MessengerDefine.swift */; };
+		12E9A49B2A1A70F6000A7D41 /* FTPDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A49A2A1A70F6000A7D41 /* FTPDefine.swift */; };
+		12E9A49D2A1A7330000A7D41 /* MailDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A49C2A1A7330000A7D41 /* MailDefine.swift */; };
+		12E9A49F2A1A7408000A7D41 /* CloudDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A49E2A1A7408000A7D41 /* CloudDefine.swift */; };
+		12E9A4A12A1A7660000A7D41 /* SystemSecurityAndPrivacyUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9A4A02A1A7660000A7D41 /* SystemSecurityAndPrivacyUtil.swift */; };
 		FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284C29F75825002FACC3 /* BlueToothUtil.swift */; };
 		FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284F29F7584E002FACC3 /* CommonUtil.swift */; };
 		FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */; };
@@ -67,6 +76,15 @@
 		127F00102A01376A00AC5A61 /* OddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddViewController.swift; sourceTree = "<group>"; };
 		127FFFFC29F3D19B00AC5A61 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
 		12E9A48E2A190AA1000A7D41 /* PFDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFDefine.swift; sourceTree = "<group>"; };
+		12E9A4902A1A4362000A7D41 /* BlockExecutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockExecutionViewController.swift; sourceTree = "<group>"; };
+		12E9A4922A1A51DB000A7D41 /* WebBrowserDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowserDefine.swift; sourceTree = "<group>"; };
+		12E9A4942A1A53A6000A7D41 /* PathUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathUtil.swift; sourceTree = "<group>"; };
+		12E9A4962A1A5B52000A7D41 /* ProcessUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessUtil.swift; sourceTree = "<group>"; };
+		12E9A4982A1A6FFF000A7D41 /* MessengerDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerDefine.swift; sourceTree = "<group>"; };
+		12E9A49A2A1A70F6000A7D41 /* FTPDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPDefine.swift; sourceTree = "<group>"; };
+		12E9A49C2A1A7330000A7D41 /* MailDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailDefine.swift; sourceTree = "<group>"; };
+		12E9A49E2A1A7408000A7D41 /* CloudDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudDefine.swift; sourceTree = "<group>"; };
+		12E9A4A02A1A7660000A7D41 /* SystemSecurityAndPrivacyUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSecurityAndPrivacyUtil.swift; sourceTree = "<group>"; };
 		FB06284C29F75825002FACC3 /* BlueToothUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothUtil.swift; sourceTree = "<group>"; };
 		FB06284F29F7584E002FACC3 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
 		FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothClassDescription.swift; sourceTree = "<group>"; };
@@ -140,6 +158,9 @@
 				FBBB4BE42A12015F0007DDE3 /* NetworkUtil.swift */,
 				FB287F9F2A162164006FA846 /* ProtectionUtil.swift */,
 				FB287FA12A16F221006FA846 /* FileNotiUtil.swift */,
+				12E9A4942A1A53A6000A7D41 /* PathUtil.swift */,
+				12E9A4962A1A5B52000A7D41 /* ProcessUtil.swift */,
+				12E9A4A02A1A7660000A7D41 /* SystemSecurityAndPrivacyUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -168,6 +189,11 @@
 				FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */,
 				FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */,
 				12E9A48E2A190AA1000A7D41 /* PFDefine.swift */,
+				12E9A4922A1A51DB000A7D41 /* WebBrowserDefine.swift */,
+				12E9A4982A1A6FFF000A7D41 /* MessengerDefine.swift */,
+				12E9A49A2A1A70F6000A7D41 /* FTPDefine.swift */,
+				12E9A49C2A1A7330000A7D41 /* MailDefine.swift */,
+				12E9A49E2A1A7408000A7D41 /* CloudDefine.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -261,6 +287,7 @@
 				127F00102A01376A00AC5A61 /* OddViewController.swift */,
 				FBBB4BE22A11FCAE0007DDE3 /* NetworkViewController.swift */,
 				FB287F9D2A162144006FA846 /* ProtectionViewController.swift */,
+				12E9A4902A1A4362000A7D41 /* BlockExecutionViewController.swift */,
 			);
 			path = TabViewItems;
 			sourceTree = "<group>";
@@ -407,14 +434,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E9A4952A1A53A6000A7D41 /* PathUtil.swift in Sources */,
 				FB95D4BE29EFCF3F00F126B5 /* BluetoothViewController.swift in Sources */,
 				127F000D29FB63D200AC5A61 /* XPCManager.swift in Sources */,
 				FB287FAD2A170B46006FA846 /* AuthHandleDefine.swift in Sources */,
+				12E9A4932A1A51DB000A7D41 /* WebBrowserDefine.swift in Sources */,
 				FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */,
 				FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */,
 				FB287FA52A16F73F006FA846 /* NotifyHandleEventDefine.swift in Sources */,
 				127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */,
 				127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */,
+				12E9A49B2A1A70F6000A7D41 /* FTPDefine.swift in Sources */,
 				127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */,
 				FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */,
 				FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */,
@@ -426,12 +456,18 @@
 				FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */,
 				FB287FA22A16F221006FA846 /* FileNotiUtil.swift in Sources */,
 				FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */,
+				12E9A49F2A1A7408000A7D41 /* CloudDefine.swift in Sources */,
 				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
+				12E9A4992A1A6FFF000A7D41 /* MessengerDefine.swift in Sources */,
 				12E9A48F2A190AA1000A7D41 /* PFDefine.swift in Sources */,
 				127FFFFD29F3D19C00AC5A61 /* DiskViewController.swift in Sources */,
+				12E9A4A12A1A7660000A7D41 /* SystemSecurityAndPrivacyUtil.swift in Sources */,
 				FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */,
+				12E9A49D2A1A7330000A7D41 /* MailDefine.swift in Sources */,
 				FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */,
+				12E9A4972A1A5B52000A7D41 /* ProcessUtil.swift in Sources */,
 				FBBB4BE32A11FCAE0007DDE3 /* NetworkViewController.swift in Sources */,
+				12E9A4912A1A4362000A7D41 /* BlockExecutionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +565,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -583,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -614,7 +650,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PFEndPointSecurityAppTemp.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -647,7 +683,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PFEndPointSecurityAppTemp.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
