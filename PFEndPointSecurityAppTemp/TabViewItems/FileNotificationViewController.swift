@@ -26,7 +26,7 @@ struct attrlist {
 
 typealias boolVoidHandler = (Bool) -> ()
 
-class FileNotificationViewController: NSViewController, OSSystemExtensionRequestDelegate {
+class FileNotificationViewController: NSViewController, OSSystemExtensionRequestDelegate, ShowLogDelegate {
     func request(_ request: OSSystemExtensionRequest, actionForReplacingExtension existing: OSSystemExtensionProperties, withExtension ext: OSSystemExtensionProperties) -> OSSystemExtensionRequest.ReplacementAction {
         print(#function)
         return .replace
@@ -59,6 +59,7 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        XPCCommunicationManager.delegate = self
     }
     
     @IBAction func installExtension(_ sender: NSButton) {
@@ -389,6 +390,59 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
     
     private func setLog(_ text: String) {
         textViewLineCount = setTextViewText(self.textView, text, textViewLineCount)
+        self.textView.scrollToEndOfDocument(self)
+    }
+    
+    func showLogMessage(_ log: String) {
+        print(#function)
+        textViewLineCount = setTextViewText(self.textView, log, textViewLineCount)
+        self.textView.scrollToEndOfDocument(self)
     }
 }
 
+// MARK: - IS SignedId
+extension FileNotificationViewController {
+    func isMessengerSignedID(_ data: NSDictionary) -> Bool {
+        let procSignedid: NSString = data.object(forKey: EndPointNameSpace.KEY_PROC_SIGNED_ID) as! NSString
+        
+        for i in 0..<MESSENGER_APP.count {
+            if procSignedid.compare(MESSENGER_APP[i].signedID! as String, options: .caseInsensitive) == .orderedSame {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isWebBrowserSignedId(_ data: NSDictionary) -> Bool {
+        let procSignedid: NSString = data.object(forKey: EndPointNameSpace.KEY_PROC_SIGNED_ID) as! NSString
+        
+        for i in 0..<WEB_BROWSER_FILE_READ_SIGNED_ID.count {
+            if procSignedid.compare(WEB_BROWSER_FILE_READ_SIGNED_ID[i] as String, options: .caseInsensitive) == .orderedSame {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isFTPSignedId(_ data: NSDictionary) -> Bool {
+        let procSignedid: NSString = data.object(forKey: EndPointNameSpace.KEY_PROC_SIGNED_ID) as! NSString
+        
+        for i in 0..<FTP_APP.count {
+            if procSignedid.compare(FTP_APP[i].signedID! as String, options: .caseInsensitive) == .orderedSame {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isMailSignedId(_ data: NSDictionary) -> Bool {
+        let procSignedid: NSString = data.object(forKey: EndPointNameSpace.KEY_PROC_SIGNED_ID) as! NSString
+        
+        for i in 0..<MAIL_APP.count {
+            if procSignedid.compare(MAIL_APP[i].signedID! as String, options: .caseInsensitive) == .orderedSame {
+                return true
+            }
+        }
+        return false
+    }
+}

@@ -35,6 +35,7 @@
 		FB287FAD2A170B46006FA846 /* AuthHandleDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */; };
 		FB287FAF2A1AE89B006FA846 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAE2A1AE89B006FA846 /* OtherViewController.swift */; };
 		FB287FB12A1AEB98006FA846 /* PFCommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FB02A1AEB98006FA846 /* PFCommonUtil.swift */; };
+		FB287FB42A1B0726006FA846 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FB32A1B0726006FA846 /* Protocol.swift */; };
 		FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49129EFB1E600F126B5 /* AppDelegate.swift */; };
 		FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */; };
 		FB95D49629EFB1E600F126B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB95D49529EFB1E600F126B5 /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandleDefine.swift; sourceTree = "<group>"; };
 		FB287FAE2A1AE89B006FA846 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		FB287FB02A1AEB98006FA846 /* PFCommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFCommonUtil.swift; sourceTree = "<group>"; };
+		FB287FB32A1B0726006FA846 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		FB95D48E29EFB1E600F126B5 /* PFEndPointSecurityAppTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFEndPointSecurityAppTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB95D49129EFB1E600F126B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotificationViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,14 @@
 			path = Methods;
 			sourceTree = "<group>";
 		};
+		FB287FB22A1B071B006FA846 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FB287FB32A1B0726006FA846 /* Protocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		FB5201AA2A159969003B9FFD /* BT */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,10 +311,11 @@
 		FB95D4BF29F0BD1C00F126B5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FB95D4C229F0DD3E00F126B5 /* Constant.swift */,
+				FB287FB22A1B071B006FA846 /* Protocol */,
 				FB287FA92A16FED2006FA846 /* Methods */,
 				FB287FA32A16F728006FA846 /* Define */,
 				FB06284B29F7580C002FACC3 /* Utils */,
-				FB95D4C229F0DD3E00F126B5 /* Constant.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -456,6 +467,7 @@
 				FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */,
 				FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */,
 				FB287FA82A16F8E6006FA846 /* EndPointSecurityDefine.swift in Sources */,
+				FB287FB42A1B0726006FA846 /* Protocol.swift in Sources */,
 				FBBB4BE12A11E3910007DDE3 /* IODetector.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
 				FB287FB12A1AEB98006FA846 /* PFCommonUtil.swift in Sources */,
@@ -644,10 +656,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PFEndPointSecurityAppTemp/PFEndPointSecurityAppTemp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QUVU2PY6PG;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7N39VX8969;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
@@ -662,6 +675,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PFEndPointSecurityAppTemp.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "PFEndPointSecurityAppTemp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -677,10 +691,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PFEndPointSecurityAppTemp/PFEndPointSecurityAppTemp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QUVU2PY6PG;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7N39VX8969;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
@@ -695,6 +710,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PFEndPointSecurityAppTemp.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "PFEndPointSecurityAppTemp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
