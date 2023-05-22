@@ -24,3 +24,18 @@ let WEB_BROWER_APP: [PFSAppInfoShort] = [
     PFSAppInfoShort("org.torproject.torbrowser", "/Applications/Tor Browser.app/Contents/MacOS/firefox"),
     PFSAppInfoShort("ru.yandex.desktop.yandex-browser", "/Applications/Yandex.app/Contents/MacOS/Yandex"),
 ]
+
+let WEB_BROWSER_FILE_READ_SIGNED_ID: [String] = [
+    "com.apple.WebKit.Networking",
+    "com.bluelinklabs.beaker-browser",
+    "com.brave.Browser",
+    "com.google.Chrome",
+    "com.microsoft.edgemac",
+    "com.naver.Whale",
+    "com.operasoftware.Opera",
+    "com.operasoftware.OperaCryptoDeveloper",
+    "com.vivaldi.Vivaldi",
+    "org.mozilla.firefox",
+    "org.torproject.torbrowser",
+    "ru.yandex.desktop.yandex-browser"
+]

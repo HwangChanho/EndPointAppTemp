@@ -33,6 +33,8 @@
 		FB287FA82A16F8E6006FA846 /* EndPointSecurityDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FA72A16F8E6006FA846 /* EndPointSecurityDefine.swift */; };
 		FB287FAB2A16FEDD006FA846 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAA2A16FEDD006FA846 /* Util.swift */; };
 		FB287FAD2A170B46006FA846 /* AuthHandleDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */; };
+		FB287FAF2A1AE89B006FA846 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FAE2A1AE89B006FA846 /* OtherViewController.swift */; };
+		FB287FB12A1AEB98006FA846 /* PFCommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FB02A1AEB98006FA846 /* PFCommonUtil.swift */; };
 		FB95D49229EFB1E600F126B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49129EFB1E600F126B5 /* AppDelegate.swift */; };
 		FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */; };
 		FB95D49629EFB1E600F126B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB95D49529EFB1E600F126B5 /* Assets.xcassets */; };
@@ -95,6 +97,8 @@
 		FB287FA72A16F8E6006FA846 /* EndPointSecurityDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointSecurityDefine.swift; sourceTree = "<group>"; };
 		FB287FAA2A16FEDD006FA846 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandleDefine.swift; sourceTree = "<group>"; };
+		FB287FAE2A1AE89B006FA846 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
+		FB287FB02A1AEB98006FA846 /* PFCommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFCommonUtil.swift; sourceTree = "<group>"; };
 		FB95D48E29EFB1E600F126B5 /* PFEndPointSecurityAppTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFEndPointSecurityAppTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB95D49129EFB1E600F126B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB95D49329EFB1E600F126B5 /* FileNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotificationViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				12E9A4942A1A53A6000A7D41 /* PathUtil.swift */,
 				12E9A4962A1A5B52000A7D41 /* ProcessUtil.swift */,
 				12E9A4A02A1A7660000A7D41 /* SystemSecurityAndPrivacyUtil.swift */,
+				FB287FB02A1AEB98006FA846 /* PFCommonUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				FBBB4BE22A11FCAE0007DDE3 /* NetworkViewController.swift */,
 				FB287F9D2A162144006FA846 /* ProtectionViewController.swift */,
 				12E9A4902A1A4362000A7D41 /* BlockExecutionViewController.swift */,
+				FB287FAE2A1AE89B006FA846 /* OtherViewController.swift */,
 			);
 			path = TabViewItems;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 				FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */,
 				FB287FA52A16F73F006FA846 /* NotifyHandleEventDefine.swift in Sources */,
 				127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */,
+				FB287FAF2A1AE89B006FA846 /* OtherViewController.swift in Sources */,
 				127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */,
 				12E9A49B2A1A70F6000A7D41 /* FTPDefine.swift in Sources */,
 				127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */,
@@ -451,6 +458,7 @@
 				FB287FA82A16F8E6006FA846 /* EndPointSecurityDefine.swift in Sources */,
 				FBBB4BE12A11E3910007DDE3 /* IODetector.swift in Sources */,
 				FB95D49429EFB1E600F126B5 /* FileNotificationViewController.swift in Sources */,
+				FB287FB12A1AEB98006FA846 /* PFCommonUtil.swift in Sources */,
 				FB287F9E2A162144006FA846 /* ProtectionViewController.swift in Sources */,
 				FB287FAB2A16FEDD006FA846 /* Util.swift in Sources */,
 				FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */,

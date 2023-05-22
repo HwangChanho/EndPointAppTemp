@@ -8,12 +8,26 @@
 import Foundation
 import libkern
 import AppKit
+import Darwin
 
 let KERN_MAX_PROC = "kern.maxproc"
 
 class ProcessUtil: NSObject {
     static let shared = ProcessUtil()
     private override init() {}
+    
+    func getUID(_ nPid: pid_t) -> uid_t? {
+        var info = kinfo_proc()
+        var size = MemoryLayout<kinfo_proc>.stride
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, nPid]
+        
+        let result = sysctl(&mib, UInt32(mib.count), &info, &size, nil, 0)
+        if result == 0 {
+            return info.kp_eproc.e_ucred.cr_uid
+        }
+        
+        return nil
+    }
     
     func killAllProcess(_ strProcess: String) -> Bool {
         var vAllPidList: [pid_t] = []
@@ -69,6 +83,40 @@ class ProcessUtil: NSObject {
         guard result == 0 else { return nil } // Some error ...
         
         return Array(procList.prefix(length / MemoryLayout<kinfo_proc>.size))
+    }
+    
+    func getProcessPID(for processPath: String) -> pid_t? {
+        let workspace = NSWorkspace.shared
+        let runningApplications = workspace.runningApplications
+        
+        for application in runningApplications {
+            let bundleURL = application.bundleURL
+            let bundlePath = bundleURL?.path
+                
+            if bundlePath == processPath {
+                return application.processIdentifier
+            }
+        }
+        
+        return nil
+    }
+    
+    func getProcessPIDs(for processPath: String) -> [pid_t] {
+        let workspace = NSWorkspace.shared
+        let runningApplications = workspace.runningApplications
+        
+        var pidArr: [pid_t] = []
+        
+        for application in runningApplications {
+            let bundleURL = application.bundleURL
+            let bundlePath = bundleURL?.path
+                
+            if bundlePath == processPath {
+                pidArr.append(application.processIdentifier)
+            }
+        }
+        
+        return pidArr
     }
     
     func getAllProcessIDs() -> [pid_t] {
