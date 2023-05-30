@@ -71,7 +71,7 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
                 using: { [self] noti in
                     let value = noti.userInfo?["info"]
                     setLog(value as! String)
-//                    connectXPC(sender)
+                    connectXPC(sender)
                     initEventComboBox()
                 }) as? NSObject
         }
@@ -84,20 +84,20 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
                 using: { [self] noti in
                     let value = noti.userInfo?["info"]
                     setLog(value as! String)
-//                    connectXPC(sender)
+                    connectXPC(sender)
                 }) as? NSObject
         }
         
         XPCCommunicationManager.installSystemExtension()
     }
     
-    @IBAction func connectXPC(_ sender: NSButton) {
+    @IBAction func connectXPC(_ sender: Any) {
+        
         if notificationInstall != nil {
             NotificationCenter.default.removeObserver(notificationInstall)
             notificationInstall = nil
-        } else {
-            
         }
+        
         XPCCommunicationManager.connectXPC()
     }
     

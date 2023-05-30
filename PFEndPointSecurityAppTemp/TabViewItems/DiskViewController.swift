@@ -48,22 +48,13 @@ class DiskViewController: NSViewController {
     private var isSetMountCallBack = false
     private var isSetUnMountCallBack = false
     
-    private var textViewLineCount = 0
+    let fileNotiUtil = FileNotificationXPCAppCommunication.shared
     
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        
-    }
+    private var textViewLineCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
-        }
     }
     
     @IBAction func getExternalVolumeNameButtonClicked(_ sender: NSButton) {
@@ -125,10 +116,27 @@ class DiskViewController: NSViewController {
         dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.ExternalStorageVolumePath.rawValue), forKey: POLICY.KEY_ADD_POLICY as NSCopying)
         dictSendData.setObject(path, forKey: POLICY.KEY_ADD_POLICY as NSCopying)
         
+        if !fileNotiUtil.sendClientData(dictSendData) {
+            textViewLineCount = setTextViewText(self.textView, "Add External VolumeName \(name) Failed !!!", textViewLineCount)
+        }
+        
+        textViewLineCount = setTextViewText(self.textView, "Add External VolumeName \(name)", textViewLineCount)
+        
     }
     
     @IBAction func delExternalVolumeNameButtonClicked(_ sender: NSButton) {
+        let path = getVolumePath(externalVolumenameListArr[checkItemSelected()])
+        let name = externalVolumenameListArr[checkItemSelected()]
         
+        let dictSendData = NSMutableDictionary()
+        dictSendData.setObject(NSNumber(integerLiteral: PEPolicyKinds.ExternalStorageVolumePath.rawValue), forKey: POLICY.KEY_ADD_POLICY as NSCopying)
+        dictSendData.setObject(path, forKey: POLICY.KEY_ADD_POLICY as NSCopying)
+        
+        if !fileNotiUtil.sendClientData(dictSendData) {
+            textViewLineCount = setTextViewText(self.textView, "Del External VolumeName \(name) Failed !!!", textViewLineCount)
+        }
+        
+        textViewLineCount = setTextViewText(self.textView, "Del External VolumeName \(name)", textViewLineCount)
     }
     
     @IBAction func mountCallBackButtonClicked(_ sender: NSButton) {

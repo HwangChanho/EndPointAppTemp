@@ -41,13 +41,6 @@ class BluetoothViewController: NSViewController {
         
     }
     
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-    
-    
     @IBAction func getConnectedDeviceListDidTapped(_ sender: NSButton) {
         checkPairedAndConnectedDevices()
     }
