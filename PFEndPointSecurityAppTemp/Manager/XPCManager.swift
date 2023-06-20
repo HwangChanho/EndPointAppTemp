@@ -193,6 +193,8 @@ class XPCManager: NSObject, JDProviderCommunication, JDAppCommunication {
     }
     
     func sendDataWithDictionaryWithAppIDWithResponseHandler(_ data: NSDictionary, appID: NSString, responseHandler: @escaping (Bool) -> ()) -> Bool {
+        print(#function, listener, appID)
+        
         if listener == nil {
             return sendDataFromAppWithAppIDWithResponseHandler(data, appID: appID, responseHandler: responseHandler)
         }
@@ -224,14 +226,16 @@ class XPCManager: NSObject, JDProviderCommunication, JDAppCommunication {
     }
     
     func receiveDataWithDictionary(_ data: NSDictionary, appID: NSString, completionHandler reply: @escaping (Bool) -> ()) {
-        connectionList?.setObject(self.currentConnection!, forKey: appID)
+        var bReply = true
         
-        if providerDelegate != nil {
-            providerDelegate?.receiveDataWithDictionary(data, appID: appID, completionHandler: reply)
+        if data.count == 0 {
+            reply(true)
             return
         }
         
-        reply(true)
+//        if data.object(forKey: NotiNameSpace.KEY_ADD_NOTIFY_EVENT) != nil {
+//            bReply =
+//        }
     }
     
 //    func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) {

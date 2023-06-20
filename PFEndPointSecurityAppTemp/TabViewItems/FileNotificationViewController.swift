@@ -84,7 +84,7 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
                 using: { [self] noti in
                     let value = noti.userInfo?["info"]
                     setLog(value as! String)
-                    connectXPC(sender)
+                    startAuthEvent(self)
                 }) as? NSObject
         }
         
@@ -92,10 +92,11 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
     }
     
     @IBAction func connectXPC(_ sender: Any) {
-        
+        print(#function)
         if notificationInstall != nil {
-            NotificationCenter.default.removeObserver(notificationInstall)
+            NotificationCenter.default.removeObserver(notificationInstall!)
             notificationInstall = nil
+            return
         }
         
         XPCCommunicationManager.connectXPC()
@@ -228,9 +229,9 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
         delEventComboBox.selectItem(at: 0)
     }
     
-    @IBAction func startAuthEvent(_ sender: NSButton) {
+    @IBAction func startAuthEvent(_ sender: Any) {
         if notificationXPCConnect != nil {
-            NotificationCenter.default.removeObserver(notificationXPCConnect)
+            NotificationCenter.default.removeObserver(notificationXPCConnect!)
             notificationXPCConnect = nil
         }
         
@@ -390,13 +391,11 @@ class FileNotificationViewController: NSViewController, OSSystemExtensionRequest
     
     private func setLog(_ text: String) {
         textViewLineCount = setTextViewText(self.textView, text, textViewLineCount)
-        self.textView.scrollToEndOfDocument(self)
     }
     
     func showLogMessage(_ log: String) {
         print(#function)
         textViewLineCount = setTextViewText(self.textView, log, textViewLineCount)
-        self.textView.scrollToEndOfDocument(self)
     }
 }
 

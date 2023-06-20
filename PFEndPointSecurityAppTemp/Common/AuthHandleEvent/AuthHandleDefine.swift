@@ -41,9 +41,9 @@ enum AuthNameSpace {
     static let EVENT_TYPE_NOTIFY_SET_ACL          = "notify_set_acl"
     static let EVENT_TYPE_NOTIFY_SIGNAL           = "notify_signal"
 
-    static let DISC_RECORDING_FRAMEWORK_PATH: [String]      = ["/System/Library/Frameworks/DiscRecording.framework"]
-    static let APPLE_BURN_FOLDER_EXT: [String]              = [".fpbf"]
+    static let DISC_RECORDING_FRAMEWORK_PATH: String      = "/System/Library/Frameworks/DiscRecording.framework"
+    static let APPLE_BURN_FOLDER_EXT: String              = ".fpbf"
 
-    static let DR_UTIL_PROCESS: [String]                    = ["/usr/bin/drutil"]
-    static let HDI_UTIL_PROCESS: [String]                   = ["/usr/bin/hdiutil"]
+    static let DR_UTIL_PROCESS: String                    = "/usr/bin/drutil"
+    static let HDI_UTIL_PROCESS: String                   = "/usr/bin/hdiutil"
 }

@@ -34,4 +34,20 @@ class PathUtil: NSObject {
         
         return strFileName
     }
+    
+    func delRootDirectory(_ strPath: String) -> String {
+        if strPath.isEmpty {
+            return ""
+        }
+        
+        var path = ""
+        if let index = strPath.firstIndex(of: "/") {
+            let startIndex = strPath.index(after: index)
+            path = String(strPath[startIndex...])
+        } else {
+            path = strPath
+        }
+        
+        return path
+    }
 }

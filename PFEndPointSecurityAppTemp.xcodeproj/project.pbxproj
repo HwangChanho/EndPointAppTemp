@@ -26,6 +26,14 @@
 		FB06284D29F75825002FACC3 /* BlueToothUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284C29F75825002FACC3 /* BlueToothUtil.swift */; };
 		FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06284F29F7584E002FACC3 /* CommonUtil.swift */; };
 		FB06285329F76A1B002FACC3 /* BlueToothClassDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */; };
+		FB27F3DC2A35E73200B781F1 /* NotifyHandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3DB2A35E73200B781F1 /* NotifyHandleEvent.swift */; };
+		FB27F3DF2A35E88800B781F1 /* libEndpointSecurity.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FB27F3DE2A35E88800B781F1 /* libEndpointSecurity.tbd */; };
+		FB27F3E12A35F0E700B781F1 /* PolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3E02A35F0E700B781F1 /* PolicyManager.swift */; };
+		FB27F3E32A3612B500B781F1 /* NotifyHandleEventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3E22A3612B500B781F1 /* NotifyHandleEventInfo.swift */; };
+		FB27F3E62A36143000B781F1 /* AuthHandleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3E52A36143000B781F1 /* AuthHandleEvent.swift */; };
+		FB27F3E82A3614F000B781F1 /* OpenFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3E72A3614F000B781F1 /* OpenFileManager.swift */; };
+		FB27F3EA2A36E90700B781F1 /* AuthHandleExecEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3E92A36E90700B781F1 /* AuthHandleExecEvent.swift */; };
+		FB27F3F22A3FF55000B781F1 /* ReceivePolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27F3F12A3FF55000B781F1 /* ReceivePolicyManager.swift */; };
 		FB287F9E2A162144006FA846 /* ProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287F9D2A162144006FA846 /* ProtectionViewController.swift */; };
 		FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287F9F2A162164006FA846 /* ProtectionUtil.swift */; };
 		FB287FA22A16F221006FA846 /* FileNotiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB287FA12A16F221006FA846 /* FileNotiUtil.swift */; };
@@ -91,6 +99,14 @@
 		FB06284C29F75825002FACC3 /* BlueToothUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothUtil.swift; sourceTree = "<group>"; };
 		FB06284F29F7584E002FACC3 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
 		FB06285229F76A1B002FACC3 /* BlueToothClassDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothClassDescription.swift; sourceTree = "<group>"; };
+		FB27F3DB2A35E73200B781F1 /* NotifyHandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyHandleEvent.swift; sourceTree = "<group>"; };
+		FB27F3DE2A35E88800B781F1 /* libEndpointSecurity.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libEndpointSecurity.tbd; path = usr/lib/libEndpointSecurity.tbd; sourceTree = SDKROOT; };
+		FB27F3E02A35F0E700B781F1 /* PolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyManager.swift; sourceTree = "<group>"; };
+		FB27F3E22A3612B500B781F1 /* NotifyHandleEventInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyHandleEventInfo.swift; sourceTree = "<group>"; };
+		FB27F3E52A36143000B781F1 /* AuthHandleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandleEvent.swift; sourceTree = "<group>"; };
+		FB27F3E72A3614F000B781F1 /* OpenFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFileManager.swift; sourceTree = "<group>"; };
+		FB27F3E92A36E90700B781F1 /* AuthHandleExecEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandleExecEvent.swift; sourceTree = "<group>"; };
+		FB27F3F12A3FF55000B781F1 /* ReceivePolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivePolicyManager.swift; sourceTree = "<group>"; };
 		FB287F9D2A162144006FA846 /* ProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionViewController.swift; sourceTree = "<group>"; };
 		FB287F9F2A162164006FA846 /* ProtectionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectionUtil.swift; sourceTree = "<group>"; };
 		FB287FA12A16F221006FA846 /* FileNotiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotiUtil.swift; sourceTree = "<group>"; };
@@ -125,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB27F3DF2A35E88800B781F1 /* libEndpointSecurity.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,12 +206,38 @@
 			path = Bridge;
 			sourceTree = "<group>";
 		};
+		FB27F3DA2A35E6F600B781F1 /* NotifyHandleEvent */ = {
+			isa = PBXGroup;
+			children = (
+				FB27F3DB2A35E73200B781F1 /* NotifyHandleEvent.swift */,
+				FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */,
+				FB27F3E22A3612B500B781F1 /* NotifyHandleEventInfo.swift */,
+			);
+			path = NotifyHandleEvent;
+			sourceTree = "<group>";
+		};
+		FB27F3DD2A35E88800B781F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB27F3DE2A35E88800B781F1 /* libEndpointSecurity.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB27F3E42A36141300B781F1 /* AuthHandleEvent */ = {
+			isa = PBXGroup;
+			children = (
+				FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */,
+				FB27F3E52A36143000B781F1 /* AuthHandleEvent.swift */,
+				FB27F3E72A3614F000B781F1 /* OpenFileManager.swift */,
+				FB27F3E92A36E90700B781F1 /* AuthHandleExecEvent.swift */,
+			);
+			path = AuthHandleEvent;
+			sourceTree = "<group>";
+		};
 		FB287FA32A16F728006FA846 /* Define */ = {
 			isa = PBXGroup;
 			children = (
-				FB287FA62A16F8D4006FA846 /* Policy */,
-				FB287FA42A16F73F006FA846 /* NotifyHandleEventDefine.swift */,
-				FB287FAC2A170B46006FA846 /* AuthHandleDefine.swift */,
 				12E9A48E2A190AA1000A7D41 /* PFDefine.swift */,
 				12E9A4922A1A51DB000A7D41 /* WebBrowserDefine.swift */,
 				12E9A4982A1A6FFF000A7D41 /* MessengerDefine.swift */,
@@ -209,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				FB287FA72A16F8E6006FA846 /* EndPointSecurityDefine.swift */,
+				FB27F3E02A35F0E700B781F1 /* PolicyManager.swift */,
+				FB27F3F12A3FF55000B781F1 /* ReceivePolicyManager.swift */,
 			);
 			path = Policy;
 			sourceTree = "<group>";
@@ -248,6 +293,7 @@
 				FB95D4A229EFB1E600F126B5 /* PFEndPointSecurityAppTempTests */,
 				FB95D4AC29EFB1E600F126B5 /* PFEndPointSecurityAppTempUITests */,
 				FB95D48F29EFB1E600F126B5 /* Products */,
+				FB27F3DD2A35E88800B781F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -311,6 +357,9 @@
 		FB95D4BF29F0BD1C00F126B5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FB287FA62A16F8D4006FA846 /* Policy */,
+				FB27F3E42A36141300B781F1 /* AuthHandleEvent */,
+				FB27F3DA2A35E6F600B781F1 /* NotifyHandleEvent */,
 				FB95D4C229F0DD3E00F126B5 /* Constant.swift */,
 				FB287FB22A1B071B006FA846 /* Protocol */,
 				FB287FA92A16FED2006FA846 /* Methods */,
@@ -458,10 +507,13 @@
 				12E9A4932A1A51DB000A7D41 /* WebBrowserDefine.swift in Sources */,
 				FB95D4C329F0DD3E00F126B5 /* Constant.swift in Sources */,
 				FB06285029F7584E002FACC3 /* CommonUtil.swift in Sources */,
+				FB27F3E62A36143000B781F1 /* AuthHandleEvent.swift in Sources */,
 				FB287FA52A16F73F006FA846 /* NotifyHandleEventDefine.swift in Sources */,
 				127F000329F8EAD100AC5A61 /* btUtil.cpp in Sources */,
 				FB287FAF2A1AE89B006FA846 /* OtherViewController.swift in Sources */,
+				FB27F3E82A3614F000B781F1 /* OpenFileManager.swift in Sources */,
 				127F000529F8EAE800AC5A61 /* btUtilWrapper.mm in Sources */,
+				FB27F3DC2A35E73200B781F1 /* NotifyHandleEvent.swift in Sources */,
 				12E9A49B2A1A70F6000A7D41 /* FTPDefine.swift in Sources */,
 				127F00112A01376A00AC5A61 /* OddViewController.swift in Sources */,
 				FB95D4C529F121A600F126B5 /* DiskUtil.swift in Sources */,
@@ -475,7 +527,10 @@
 				FB287FAB2A16FEDD006FA846 /* Util.swift in Sources */,
 				FBBB4BE52A12015F0007DDE3 /* NetworkUtil.swift in Sources */,
 				FB287FA22A16F221006FA846 /* FileNotiUtil.swift in Sources */,
+				FB27F3E32A3612B500B781F1 /* NotifyHandleEventInfo.swift in Sources */,
 				FB287FA02A162164006FA846 /* ProtectionUtil.swift in Sources */,
+				FB27F3EA2A36E90700B781F1 /* AuthHandleExecEvent.swift in Sources */,
+				FB27F3E12A35F0E700B781F1 /* PolicyManager.swift in Sources */,
 				12E9A49F2A1A7408000A7D41 /* CloudDefine.swift in Sources */,
 				127F000F2A01374900AC5A61 /* OddUtil.swift in Sources */,
 				12E9A4992A1A6FFF000A7D41 /* MessengerDefine.swift in Sources */,
@@ -488,6 +543,7 @@
 				12E9A4972A1A5B52000A7D41 /* ProcessUtil.swift in Sources */,
 				FBBB4BE32A11FCAE0007DDE3 /* NetworkViewController.swift in Sources */,
 				12E9A4912A1A4362000A7D41 /* BlockExecutionViewController.swift in Sources */,
+				FB27F3F22A3FF55000B781F1 /* ReceivePolicyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

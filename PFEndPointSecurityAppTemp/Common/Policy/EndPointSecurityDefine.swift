@@ -65,7 +65,7 @@ enum PolicyKinds: Int {
     case Last
 }
 
-enum EndPointNameSpace {
+enum EndPointNameSpace: CaseIterable {
     // 전송 데이터의 Dictionary Key
     static let KEY_PATH               = "path"
     static let KEY_FFLAG              = "fflag"
@@ -105,10 +105,10 @@ enum EndPointNameSpace {
     static let ODD_POLICY_PRIVATE_DATA_RECORD_CHECK = 2
     
     // 공통 사용 상수형 문자열
-    static let FINDER_PROC_PATH: [String]                   = ["/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder"]
-    static let DESKTOP_SERVICES_HELPER_PROC_PATH: [String]    = ["/System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/Resources/DesktopServicesHelper"]
-    static let CP_PROC_PATH: [String]                         = ["/bin/cp"]
-    static let MV_PROC_PATH: [String]                         = ["/bin/mv"]
+    static let FINDER_PROC_PATH: String                   = "/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder"
+    static let DESKTOP_SERVICES_HELPER_PROC_PATH: String    = "/System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/Resources/DesktopServicesHelper"
+    static let CP_PROC_PATH: String                         = "/bin/cp"
+    static let MV_PROC_PATH: String                         = "/bin/mv"
     
-    static let EMPTY: [String]                                = ["empty"]
+    static let EMPTY: String                                = "empty"
 }

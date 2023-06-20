@@ -69,10 +69,6 @@ class FileNotificationXPCAppCommunication: NSObject, JDAppCommunication {
             } else if eventType.compare(AuthNameSpace.EVENT_TYPE_IS_ALLOW_FILE_OPEN) == .orderedSame {
                 print("undefined data!!", data)
                 
-                
-                
-                
-                
                 for key in data.allKeys {
                     let NSKey: NSString = key as! NSString
                     
@@ -188,6 +184,7 @@ class FileNotificationXPCAppCommunication: NSObject, JDAppCommunication {
     func connectXPC() {
         let log = "XPC Connect"
         delegate?.showLogMessage(log)
+        
         let appID = "\(FileNotiNameSpace.APP_ID)_\(getpid())"
         XPCConnection.registerWithMachServiceNameWithDelegateWithAppIDWithCompletionHandler(FileNotiNameSpace.PF_ES_EXTENSION_ID.rawValue as NSString, self, appID as NSString) { [self] success in
             if success {
@@ -215,7 +212,8 @@ class FileNotificationXPCAppCommunication: NSObject, JDAppCommunication {
         var bSucceed = false
         let appID = "\(FileNotiNameSpace.APP_ID)_\(getpid())"
         
-        let _ = XPCConnection.sendDataFromAppWithAppIDWithResponseHandler(dictSendData, appID: appID as NSString) { [self] success in
+        let _ = XPCConnection.sendDataWithDictionaryWithAppIDWithResponseHandler(dictSendData, appID: appID as NSString, responseHandler: { [self] success in
+            
             if success {
                 bSucceed = true
                 let log = "Successfully SendData"
@@ -224,7 +222,7 @@ class FileNotificationXPCAppCommunication: NSObject, JDAppCommunication {
                 let log = "SendData failed"
                 delegate?.showLogMessage(log)
             }
-        }
+        })
         
         return bSucceed
     }
